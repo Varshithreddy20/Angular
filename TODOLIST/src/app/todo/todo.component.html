@@ -1,0 +1,34 @@
+<div class="todo-container">
+  <h1>Todo List</h1>
+
+  <div class="input-container">
+    <input [(ngModel)]="newTodo.name" placeholder="Todo name" />
+    <input [(ngModel)]="newTodo.description" placeholder="Todo description" />
+    <button (click)="addTodo()">Add Todo</button>
+  </div>
+
+  <ul *ngIf="todos.length > 0; else noTodos">
+    <li *ngFor="let todo of todos">
+      <ng-container *ngIf="editingTodo?.id !== todo.id; else editMode">
+        <strong>{{ todo.name }}</strong
+        >- {{ todo.description }}
+        <div class="action-buttons">
+          <button (click)="startEdit(todo)">Edit</button>
+          <button (click)="deleteTodo(todo.id)">Delete</button>
+        </div>
+      </ng-container>
+      <ng-template #editMode>
+        <input [(ngModel)]="editingTodo!.name" />
+        <input [(ngModel)]="editingTodo!.description" />
+        <div class="edit-buttons">
+          <button (click)="saveEdit()">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+  <ng-template #noTodos>
+    <p>No todos yet. Add some!</p>
+  </ng-template>
+</div>

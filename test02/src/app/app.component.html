@@ -1,0 +1,23 @@
+<h1>This is app component</h1>
+<h2>{{ title }}</h2>
+<p>{{ 3 + 1 }}</p>
+<img [src]="imgURL" alt="farmerimg" />
+<p>
+  <button disabled="{{ isDisabled }}">
+    Disable Button(using string interpotation)
+  </button>
+  <button [disabled]="isDisabled">Disable Button</button>
+</p>
+<h4>Class Binding</h4>
+<p>
+  <button [class.active]="isActive" [class.no-active]="!isActive">Click</button>
+  <button [style.background]="isActive ? 'red' : 'green'">Click Here</button>
+  <button (click)="buttonClick()">Click Me</button>
+
+  <button [class.banana]="fruitName == 'banana'">Fruit Shop</button>
+</p>
+<p>
+  <button (keyup)="buttonClick()">Click Here</button>
+
+  <input type="text" [value]="username" />
+</p>

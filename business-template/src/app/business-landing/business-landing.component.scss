@@ -1,0 +1,94 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a73e8;
+  color: white;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.text-content {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.image-content {
+  flex: 1;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background-color: white;
+  color: #1a73e8;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+.watch-intro {
+  color: white;
+  text-decoration: none;
+}
+
+.watch-intro::before {
+  content: "▶";
+  margin-right: 5px;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+  .text-content,
+  .image-content {
+    width: 100%;
+    padding-right: 0;
+  }
+}
