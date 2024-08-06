@@ -1,0 +1,121 @@
+/* Variables for colors and other common values */
+$primary-color: #4caf50;
+$secondary-color: #f4f4f4;
+$font-color: #333;
+$border-radius: 4px;
+$transition-duration: 0.3s;
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: $font-color;
+
+    input {
+      margin-top: 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: $border-radius;
+      transition: border-color $transition-duration;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color $transition-duration;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+  thead {
+    background-color: $primary-color;
+    color: white;
+
+    th {
+      padding: 10px;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #ccc;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+
+      td {
+        padding: 10px;
+
+        &:first-child {
+          border-left: 1px solid #ccc;
+        }
+
+        &:last-child {
+          border-right: 1px solid #ccc;
+        }
+      }
+
+      td:last-child {
+        text-align: right;
+
+        button {
+          padding: 5px 10px;
+          background-color: $primary-color;
+          color: white;
+          border: none;
+          border-radius: $border-radius;
+          cursor: pointer;
+          transition: background-color $transition-duration;
+
+          &:hover {
+            background-color: darken($primary-color, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Child component styles */
+app-child {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: $secondary-color;
+  border: 1px solid #ccc;
+  border-radius: $border-radius;
+}

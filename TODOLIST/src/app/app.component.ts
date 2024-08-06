@@ -7,4 +7,6 @@ import { TodoListComponent } from './todo/todo.component';
   imports: [TodoListComponent],
   template: '<app-todo-list></app-todo-list>',
 })
-export class AppComponent {}
+export class AppComponent {
+  [x: string]: any;
+}

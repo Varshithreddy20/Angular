@@ -7,43 +7,89 @@
 }
 
 .todo-container {
-  background-color: #4e9bdee8;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: #e6f3ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  position: relative; // Add position relative to position the alerts
 }
 
 h1 {
   text-align: center;
   color: #333;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 25px;
 }
 
 .input-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
+    padding: 3px;
+    border: 1px solid #cce0ff;
+    border-radius: 3px;
+    margin-right: 12px;
+    font-size: 15px;
   }
 
   button {
-    padding: 10px 20px;
-    background-color: #28a745;
+    padding: 12px 24px;
+    background-color: #7fb3ff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 16px;
 
     &:hover {
-      background-color: #65b300;
+      background-color: #5c9eff;
+    }
+  }
+}
+
+.alert-message {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  text-align: center;
+  z-index: 10;
+  width: 80%;
+  max-width: 500px;
+
+  &.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  &.delete {
+    background-color: rgb(248, 111, 111);
+    color: #861313;
+    border: 1px solid #f4abab;
+  }
+}
+
+.todo-headers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #555;
+
+  span {
+    flex: 1;
+    text-align: left;
+
+    &:nth-child(2) {
+      flex: 2;
     }
   }
 }
@@ -57,14 +103,24 @@ ul {
     justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
 
-    strong {
-      font-size: 16px;
+    .todo-name {
+      flex: 1;
+      font-size: 18px;
       color: #333;
+      font-weight: bold;
+    }
+
+    .todo-description {
+      flex: 2;
+      font-size: 16px;
+      color: #555;
+      text-align: left;
+      margin-left: 15px;
     }
 
     .action-buttons,
@@ -73,27 +129,28 @@ ul {
       gap: 10px;
 
       button {
-        padding: 5px 10px;
+        padding: 8px 12px;
         border: none;
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s;
+        font-size: 14px;
 
-        &:nth-child(1) {
-          background-color: #d68a33;
-          color: white;
+        &:first-child {
+          background-color: #ffc107;
+          color: #333;
 
           &:hover {
-            background-color: #cb8331;
+            background-color: #ffb300;
           }
         }
 
-        &:nth-child(2) {
-          background-color: #dc3535;
+        &:last-child {
+          background-color: #ff6b6b;
           color: white;
 
           &:hover {
-            background-color: #c82323;
+            background-color: #ff5252;
           }
         }
       }
@@ -102,14 +159,53 @@ ul {
     input {
       flex: 1;
       padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      border: 1px solid #cce0ff;
+      border-radius: 6px;
       margin-right: 10px;
+      font-size: 16px;
     }
   }
 }
 
 p {
   text-align: center;
-  color: #999;
+  color: #555;
+}
+
+.confirm-dialog {
+  background: rgb(231, 216, 146);
+  border: 1px solid #f1953a;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+
+.dialog-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff; /* White text color for better contrast */
+}
+
+.button-yes {
+  background-color: #4caf50; /* Green */
+}
+
+.button-no {
+  background-color: #f44336; /* Red */
 }

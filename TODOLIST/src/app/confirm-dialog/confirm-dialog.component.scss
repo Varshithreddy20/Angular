@@ -1,0 +1,37 @@
+.confirm-dialog {
+  background: rgb(231, 216, 146);
+  border: 1px solid #f1953a;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+
+.dialog-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff; /* White text color for better contrast */
+}
+
+.button-yes {
+  background-color: #4caf50; /* Green */
+}
+
+.button-no {
+  background-color: #f44336; /* Red */
+}

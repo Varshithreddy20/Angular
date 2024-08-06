@@ -1,0 +1,21 @@
+<div class="space">
+  <label>
+    Name:
+    <input [(ngModel)]="newPerson.name" placeholder="Name" />
+  </label>
+  <label>
+    Email:
+    <input [(ngModel)]="newPerson.email" placeholder="Email" type="email" />
+  </label>
+  <label>
+    Phone Number:
+    <input
+      [(ngModel)]="newPerson.phoneNumber"
+      placeholder="Phone Number"
+      type="number"
+    />
+  </label>
+  <button (click)="savePerson()">Save</button>
+</div>
+
+<app-child [people]="people" (editPerson)="editPerson($event)"></app-child>
