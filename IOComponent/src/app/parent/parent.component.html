@@ -1,21 +1,38 @@
+<!-- parent.component.html -->
 <div class="space">
-  <label>
-    Name:
-    <input [(ngModel)]="newPerson.name" placeholder="Name" />
-  </label>
-  <label>
-    Email:
-    <input [(ngModel)]="newPerson.email" placeholder="Email" type="email" />
-  </label>
-  <label>
-    Phone Number:
+  <h2>FORM</h2>
+  <form (ngSubmit)="savePerson()">
+    <input
+      [(ngModel)]="newPerson.name"
+      name="name"
+      placeholder="Name"
+      required
+    />
+    <input
+      [(ngModel)]="newPerson.email"
+      name="email"
+      placeholder="Email"
+      required
+    />
     <input
       [(ngModel)]="newPerson.phoneNumber"
+      name="phoneNumber"
       placeholder="Phone Number"
-      type="number"
+      required
     />
-  </label>
-  <button (click)="savePerson()">Save</button>
+    <button type="submit">Save</button>
+  </form>
 </div>
 
-<app-child [people]="people" (editPerson)="editPerson($event)"></app-child>
+<app-child
+  [people]="people"
+  (editPerson)="editPerson($event)"
+  (deleteConfirmation)="confirmDelete($event)"
+></app-child>
+
+<app-confirm-dialog
+  *ngIf="showDialog"
+  [message]="dialogMessage"
+  [showCancelButton]="dialogAction !== null"
+  (confirm)="handleConfirm($event)"
+></app-confirm-dialog>

@@ -1,107 +1,70 @@
-/* Variables for colors and other common values */
-$primary-color: #4c6baf;
-$secondary-color: #f4f4f4;
-$font-color: #000000;
-$border-radius: 4px;
-$transition-duration: 0.3s;
+/* Styles specific to the child component */
 
-/* Container for the form and table */
-.space {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: $border-radius;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-
-  label {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    color: $font-color;
-
-    input {
-      margin-top: 5px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: $border-radius;
-      transition: border-color $transition-duration;
-
-      &:focus {
-        border-color: $primary-color;
-        outline: none;
-      }
-    }
-  }
-
-  button {
-    padding: 10px 20px;
-    background-color: $primary-color;
-    color: white;
-    border: none;
-    border-radius: $border-radius;
-    cursor: pointer;
-    transition: background-color $transition-duration;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
-  }
-}
-
-/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 
   thead {
-    background-color: $primary-color;
+    background-color: #4c6baf;
     color: white;
 
     th {
-      padding: 10px;
+      padding: 12px;
       text-align: left;
     }
   }
 
   tbody {
     tr {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #ddd;
 
       &:hover {
-        background-color: $secondary-color;
+        background-color: #f4f4f4;
+      }
+
+      &.pale-red {
+        background-color: #ffcccc;
       }
 
       td {
-        padding: 10px;
+        padding: 12px;
 
         &:first-child {
-          border-left: 1px solid #ccc;
+          border-left: 1px solid #ddd;
         }
 
         &:last-child {
-          border-right: 1px solid #ccc;
+          border-right: 1px solid #ddd;
         }
       }
 
       td:last-child {
-        text-align: right;
+        text-align: left;
 
-        button {
-          padding: 5px 10px;
-          background-color: $primary-color;
-          color: white;
+        .btn {
+          padding: 8px 16px;
           border: none;
-          border-radius: $border-radius;
+          border-radius: 8px;
           cursor: pointer;
-          transition: background-color $transition-duration;
+          transition: background-color 0.3s;
 
-          &:hover {
-            background-color: darken($primary-color, 10%);
+          &.btn-primary {
+            background-color: #05378eb0;
+            color: black;
+
+            &:hover {
+              background-color: darken(#05378eb0, 10%);
+            }
+          }
+
+          &.btn-secondary {
+            background-color: #bb1818;
+            color: white;
+
+            &:hover {
+              background-color: darken(#bb1818, 10%);
+            }
           }
         }
       }
@@ -109,11 +72,18 @@ table {
   }
 }
 
-/* Child component styles */
-app-child {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: $secondary-color;
-  border: 1px solid #ccc;
-  border-radius: $border-radius;
+.EDIT {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: palegoldenrod;
+  &:hover {
+    background-color: darken(palegoldenrod, 10%);
+  }
+}
+
+.pale-red {
+  background-color: #ffcccc; // Pale red color
 }

@@ -1,0 +1,16 @@
+<!-- confirm-dialog.component.html -->
+<div class="dialog-overlay">
+  <div class="dialog-content">
+    <div class="dialog-message" [innerHTML]="message"></div>
+    <div class="dialog-buttons">
+      <button class="btn btn-primary" (click)="onConfirm()">OK</button>
+      <button
+        *ngIf="showCancelButton"
+        class="btn btn-secondary"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

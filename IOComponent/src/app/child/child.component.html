@@ -4,17 +4,32 @@
       <th>Name</th>
       <th>Email</th>
       <th>Phone Number</th>
-      <th>Actions</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let person of people; let i = index">
+    <tr
+      *ngFor="let person of people; let i = index"
+      [ngClass]="{ 'pale-red': isDeleted(i) }"
+    >
       <td>{{ person.name }}</td>
       <td>{{ person.email }}</td>
       <td>{{ person.phoneNumber }}</td>
       <td>
-        <button (click)="edit(i)">Edit</button>
+        <button class="EDIT" (click)="edit(i)">Edit</button>
+      </td>
+      <td>
+        <button class="btn btn-secondary" (click)="confirmDelete(i)">
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>
 </table>
+
+<app-confirm-dialog
+  *ngIf="showDialog"
+  [message]="dialogMessage"
+  (confirm)="handleConfirm($event)"
+></app-confirm-dialog>
