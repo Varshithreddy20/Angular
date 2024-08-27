@@ -25,19 +25,41 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  flex-wrap: wrap; /* Allows inputs and messages to wrap on smaller screens */
+
+  label {
+    flex-basis: 100%;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
 
   input {
     flex: 1;
-    padding: 3px;
-    border: 1px solid #cce0ff;
-    border-radius: 3px;
+    padding: 8px;
+    border: 1px solid #b3d4fc;
+    border-radius: 5px;
     margin-right: 12px;
-    font-size: 15px;
+    font-size: 16px;
+
+    &:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  }
+
+  .text-danger {
+    flex-basis: 100%;
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left; /* Align error message to the left */
+    padding-left: 2px; /* Slight padding to align with input */
   }
 
   button {
     padding: 12px 24px;
-    background-color: #7fb3ff;
+    background-color: #007bff;
     border: none;
     border-radius: 6px;
     color: white;
@@ -46,7 +68,7 @@ h1 {
     font-size: 16px;
 
     &:hover {
-      background-color: #5c9eff;
+      background-color: #0056b3;
     }
   }
 }

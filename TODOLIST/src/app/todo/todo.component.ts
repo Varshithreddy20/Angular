@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TodoService } from '../todo.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
@@ -13,20 +19,30 @@ interface Todo {
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ConfirmDialogComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ConfirmDialogComponent,
+    FormsModule,
+  ],
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
-  newTodo: Todo = { id: 0, name: '', description: '' };
   editingTodo: Todo | null = null;
   showAddAlert = false;
   showDeleteAlert = false;
   showConfirmDialog = false;
   confirmedDeleteId: number | null = null;
+  userForm: FormGroup;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private fb: FormBuilder) {
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.loadTodos();
@@ -44,11 +60,17 @@ export class TodoListComponent implements OnInit {
   }
 
   addTodo() {
-    if (this.newTodo.name && this.newTodo.description) {
-      this.todoService.createTodo(this.newTodo).subscribe(
+    if (this.userForm.valid) {
+      const newTodo: Todo = {
+        id: 0,
+        name: this.userForm.value.name,
+        description: this.userForm.value.description,
+      };
+
+      this.todoService.createTodo(newTodo).subscribe(
         (todo) => {
           this.todos.push(todo);
-          this.newTodo = { id: 0, name: '', description: '' };
+          this.userForm.reset();
           this.showAddAlert = true;
           setTimeout(() => (this.showAddAlert = false), 1000);
         },

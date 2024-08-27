@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "business-template": {
+    "AngularForms": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/business-template",
+            "outputPath": "dist/angular-forms",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "business-template:build:production"
+              "buildTarget": "AngularForms:build:production"
             },
             "development": {
-              "buildTarget": "business-template:build:development"
+              "buildTarget": "AngularForms:build:development"
             }
           },
           "defaultConfiguration": "development"

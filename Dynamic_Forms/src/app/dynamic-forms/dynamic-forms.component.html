@@ -1,0 +1,81 @@
+<h1>Modern Forms</h1>
+<h2>Please fill the details!!</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label for="name">Name</label>
+  <input id="name" formControlName="name" />
+  <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)">
+    Name is required.
+  </div>
+
+  <label for="email">Email</label>
+  <input id="email" formControlName="email" />
+  <div *ngIf="form.get('email')?.invalid && (form.get('email')?.touched || form.get('email')?.dirty)">
+    Enter a valid email.
+  </div>
+
+  <label for="address">Address</label>
+  <input id="address" formControlName="address" />
+  <div *ngIf="form.get('address')?.invalid && (form.get('address')?.touched || form.get('address')?.dirty)">
+    Address is required (minimum length 10 characters).
+  </div>
+
+  <label for="phone">Phone</label>
+  <input id="phone" formControlName="phone" />
+  <div *ngIf="form.get('phone')?.invalid && (form.get('phone')?.touched || form.get('phone')?.dirty)">
+    Enter a valid 10-digit phone number.
+  </div>
+
+  <label for="gender">Gender</label>
+  <select id="gender" formControlName="gender">
+    <option value="" disabled>Select Gender</option>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+    <option value="O">Other</option>
+  </select>
+  <div *ngIf="form.get('gender')?.invalid && (form.get('gender')?.touched || form.get('gender')?.dirty)">
+    Gender is required.
+  </div>
+
+  <div formArrayName="technologies">
+    <div *ngFor="let tech of technologies.controls; let i = index" [formGroupName]="i">
+      <label for="technology-{{ i }}">Technology {{ i + 1 }}</label>
+      <input id="technology-{{ i }}" formControlName="technology" />
+      <button type="button" (click)="removeTechnology(i)">-</button>
+      <div *ngIf="tech.get('technology')?.invalid && (tech.get('technology')?.touched || tech.get('technology')?.dirty)">
+        Technology is required.
+      </div>
+    </div>
+    <button type="button" (click)="addTechnology()">+</button>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
+
+<!-- Table to display submitted data -->
+<h2>Submitted Data</h2>
+<table *ngIf="submittedData.length > 0" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Gender</th>
+      <th>Technologies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of submittedData">
+      <td>{{ data.name }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.address }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.gender }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let tech of data.technologies">{{ tech.technology }}</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

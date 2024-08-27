@@ -1,11 +1,40 @@
 <div class="todo-container">
   <h1>To-Do List</h1>
 
-  <div class="input-container">
-    <input [(ngModel)]="newTodo.name" placeholder="Todo name" />
-    <input [(ngModel)]="newTodo.description" placeholder="Todo description" />
-    <button (click)="addTodo()">Add Todo</button>
-  </div>
+  <form [formGroup]="userForm" (ngSubmit)="addTodo()">
+    <div class="input-container">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <div
+        *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+        class="text-danger"
+      >
+        Name is required.
+      </div>
+      <label for="description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        formControlName="description"
+      />
+      <div
+        *ngIf="
+          userForm.get('description')?.touched &&
+          userForm.get('description')?.invalid
+        "
+        class="text-danger"
+      >
+        Description is required.
+      </div>
+      <button type="submit" [disabled]="userForm.invalid">Add Todo</button>
+    </div>
+  </form>
 
   <div *ngIf="showAddAlert" class="alert-message success">
     Successfully added to the to-do list!
@@ -30,7 +59,12 @@
           <input [(ngModel)]="editingTodo!.name" />
           <input [(ngModel)]="editingTodo!.description" />
           <div class="edit-buttons">
-            <button (click)="saveEdit()">Save</button>
+            <button
+              (click)="saveEdit()"
+              [disabled]="!editingTodo!.name || !editingTodo!.description"
+            >
+              Save
+            </button>
             <button (click)="cancelEdit()">Cancel</button>
           </div>
         </ng-template>
