@@ -9,7 +9,10 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { validateName } from '../confirm-dialog/custom_validators/custom_validators';
+import {
+  validateAddress,
+  validateName,
+} from '../confirm-dialog/custom_validators/custom_validators';
 
 @Component({
   selector: 'app-details',
@@ -27,7 +30,7 @@ export class DetailsComponent {
     this.form = this.fb.group({
       name: ['', [Validators.required, validateName]],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.minLength(10)]],
+      address: ['', [Validators.required, validateAddress]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       gender: ['', Validators.required],
       technologies: this.fb.array([this.createTechnologyControl()]),

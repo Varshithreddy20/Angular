@@ -1,0 +1,124 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f8f8;
+  font-family: Arial, sans-serif;
+
+  .side-nav {
+    width: 200px;
+    background-color: #d9534f;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c9302c;
+        border-radius: 5px;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 2rem;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      h1 {
+        font-size: 2.5rem;
+        color: #333;
+      }
+
+      .logout-btn {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #c9302c;
+        }
+      }
+    }
+
+    .about {
+      margin-bottom: 3rem;
+
+      h2 {
+        font-size: 2rem;
+        color: #d9534f;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .restaurant-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 1rem;
+      }
+    }
+
+    .featured {
+      h2 {
+        font-size: 2rem;
+        color: #d9534f;
+        margin-bottom: 1rem;
+      }
+
+      .featured-dishes {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        .dish {
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          text-align: center;
+          padding: 1rem;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #d9534f;
+            border-radius: 5px;
+          }
+
+          p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

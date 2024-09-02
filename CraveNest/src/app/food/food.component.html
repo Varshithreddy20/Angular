@@ -1,0 +1,18 @@
+<div class="food-container">
+  <nav class="cuisine-nav">
+    <button *ngFor="let cuisine of cuisines" (click)="selectCuisine(cuisine)">
+      {{ cuisine }}
+    </button>
+  </nav>
+  <main class="food-content">
+    <h2>{{ selectedCuisine }} Cuisine</h2>
+    <div class="food-items">
+      <div *ngFor="let item of foodItems" class="food-item">
+        <img [src]="item.image" [alt]="item.name" />
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p class="price">{{ item.price | currency }}</p>
+      </div>
+    </div>
+  </main>
+</div>

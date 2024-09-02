@@ -1,0 +1,94 @@
+<div class="signup-container">
+  <h2>Signup Page</h2>
+
+  <form [formGroup]="SignUpForm" (ngSubmit)="onSignUp()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        placeholder="Enter your name"
+      />
+      <div
+        *ngIf="
+          SignUpForm.get('name')?.invalid && SignUpForm.get('name')?.touched
+        "
+        class="error"
+      >
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date_of_birth">Date of Birth</label>
+      <input
+        type="date"
+        id="date_of_birth"
+        formControlName="date_of_birth"
+        class="form-control"
+      />
+      <div
+        *ngIf="
+          SignUpForm.get('date_of_birth')?.invalid &&
+          SignUpForm.get('date_of_birth')?.touched
+        "
+        class="error"
+      >
+        Date of Birth is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Enter your email"
+      />
+      <div
+        *ngIf="
+          SignUpForm.get('email')?.invalid && SignUpForm.get('email')?.touched
+        "
+        class="error"
+      >
+        Valid email is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter your password"
+      />
+      <div
+        *ngIf="
+          SignUpForm.get('password')?.invalid &&
+          SignUpForm.get('password')?.touched
+        "
+        class="error"
+      >
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="SignUpForm.invalid"
+    >
+      Sign Up
+    </button>
+
+    <button type="button" class="btn btn-link" (click)="navigateToLogin()">
+      Already have an account? Log In
+    </button>
+  </form>
+</div>
