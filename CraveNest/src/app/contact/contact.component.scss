@@ -1,0 +1,80 @@
+.contact {
+  background-color: #3a2121;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 0px solid #eee;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.logo {
+  max-width: 70px;
+}
+
+footer {
+  background-color: #412828;
+  color: #fff;
+  padding: 2px 0;
+  text-align: center;
+}
+
+/* Updated styles for the logo section and info */
+.logo-section {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.main-logo {
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.info {
+  color: #fff;
+  background-color: #3a2121;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.info i {
+  margin-right: 8px;
+  color: #ffa500; /* Orange for the icons */
+}

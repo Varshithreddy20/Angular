@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Red Bamboo NYC - Vegan Comfort Food</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        background-color: #fff;
+        padding: 20px 0;
+        border-bottom: 1px solid #eee;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      nav a {
+        color: #333;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+      .logo {
+        max-width: 200px;
+      }
+      .hero {
+        background-image: url("https://via.placeholder.com/1200x600");
+        background-size: cover;
+        background-position: center;
+        height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero-content {
+        text-align: center;
+        color: #fff;
+      }
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .cta-button {
+        background-color: #4a0e0e;
+        color: #fff;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+      .reviews {
+        display: flex;
+        justify-content: space-between;
+        margin: 50px 0;
+      }
+      .review {
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+      }
+      .review img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .food-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 50px 0;
+      }
+      .food-item img {
+        width: 100%;
+        height: auto;
+      }
+      .about,
+      .order {
+        margin: 50px 0;
+      }
+      footer {
+        background-color: #4a0e0e;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <img
+            src="https://via.placeholder.com/200x50"
+            alt="Red Bamboo Logo"
+            class="logo"
+          />
+          <div>
+            <a href="#home">HOME</a>
+            <a href="#order">ORDER</a>
+            <a href="#menus">MENUS</a>
+            <a href="#gift-cards">GIFT CARDS</a>
+            <a href="#about">ABOUT</a>
+            <a href="#contact">CONTACT</a>
+            <a href="#press">PRESS</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>RED BAMBOO</h1>
+        <p>Vegan Comfort Food</p>
+        <a href="#order" class="cta-button">Order Now</a>
+      </div>
+    </section>
+
+    <div class="container">
+      <section class="reviews">
+        <div class="review">
+          <img src="https://via.placeholder.com/80" alt="Yelp" />
+          <h3>"It surpassed all my expectations!"</h3>
+          <p>
+            The food looks like it has been prepared for a culinary magazine.
+          </p>
+        </div>
+        <div class="review">
+          <img src="https://via.placeholder.com/80" alt="TripAdvisor" />
+          <h3>"Best vegetarian restaurant... EVER!"</h3>
+          <p>
+            I absolutely love this place. The Wings are the best things ever!!!
+          </p>
+        </div>
+        <div class="review">
+          <img src="https://via.placeholder.com/80" alt="Happy Customer" />
+          <h3>"Delicious food, good prices"</h3>
+          <p>
+            Very nice cozy place. Service was good, food delicious and so much
+            to choose from.
+          </p>
+        </div>
+      </section>
+
+      <section class="food-grid">
+        <div class="food-item">
+          <img src="https://via.placeholder.com/300x200" alt="Vegan Dish 1" />
+        </div>
+        <div class="food-item">
+          <img src="https://via.placeholder.com/300x200" alt="Vegan Dish 2" />
+        </div>
+        <div class="food-item">
+          <img src="https://via.placeholder.com/300x200" alt="Vegan Dish 3" />
+        </div>
+        <div class="food-item">
+          <img src="https://via.placeholder.com/300x200" alt="Vegan Dish 4" />
+        </div>
+      </section>
+
+      <section class="about">
+        <h2>ABOUT our restaurant</h2>
+        <p>
+          Red Bamboo is a vegan comfort food restaurant located in the heart of
+          New York City. We offer a wide variety of plant-based dishes that will
+          satisfy vegans and non-vegans alike.
+        </p>
+      </section>
+
+      <section class="order">
+        <h2>ORDER</h2>
+        <h3>pick-up & delivery</h3>
+        <div>
+          <h4>CONTACTLESS TAKE-OUT</h4>
+          <p>To place an order for pickup, please order via Square</p>
+          <a href="#" class="cta-button">ORDER PICKUP</a>
+        </div>
+        <div>
+          <h4>DELIVERY EXPANDED</h4>
+          <p>
+            To place an order for delivery, please choose from one of our
+            partners below:
+          </p>
+          <a href="#">Postmates</a>
+          <a href="#">Grubhub</a>
+          <a href="#">Seamless</a>
+          <a href="#">UberEats</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Red Bamboo NYC. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

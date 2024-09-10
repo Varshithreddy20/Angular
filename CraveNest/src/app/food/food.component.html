@@ -1,18 +1,61 @@
-<div class="food-container">
-  <nav class="cuisine-nav">
-    <button *ngFor="let cuisine of cuisines" (click)="selectCuisine(cuisine)">
-      {{ cuisine }}
-    </button>
-  </nav>
-  <main class="food-content">
-    <h2>{{ selectedCuisine }} Cuisine</h2>
-    <div class="food-items">
-      <div *ngFor="let item of foodItems" class="food-item">
-        <img [src]="item.image" [alt]="item.name" />
-        <h3>{{ item.name }}</h3>
-        <p>{{ item.description }}</p>
-        <p class="price">{{ item.price | currency }}</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crave-Nest - Food</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <nav>
+          <img src="/cravenestlogo.jpg" alt="Crave Nest Logo" class="logo" />
+          <div>
+            <a href="/home">HOME</a>
+            <a href="/order">ORDER</a>
+            <a href="#menus">MENUS</a>
+            <a href="#gift-cards">GIFT CARDS</a>
+            <a href="/bookings">BOOKINGS</a>
+            <a href="/about">ABOUT</a>
+            <a href="/contact">CONTACT</a>
+          </div>
+
+          <div class="profile">
+            <a href="/profile">PROFILE</a>
+          </div>
+        </nav>
       </div>
-    </div>
-  </main>
-</div>
+    </header>
+
+    <nav class="cuisine-nav">
+      <button
+        *ngFor="let cuisine of cuisines"
+        (click)="selectCuisine(cuisine)"
+        [class.active]="cuisine === selectedCuisine"
+      >
+        {{ cuisine }}
+      </button>
+    </nav>
+
+    <main class="food-content">
+      <h2>{{ selectedCuisine }} Cuisine</h2>
+      <div class="food-items">
+        <div *ngFor="let item of filteredFoodItems" class="food-item">
+          <img [src]="item.image" [alt]="item.name" />
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+          <p class="price">{{ item.price | currency }}</p>
+          <button type="button" (click)="addToCart(item)">Add to Cart</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Crave Nest BLR. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

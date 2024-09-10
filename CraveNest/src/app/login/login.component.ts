@@ -30,6 +30,9 @@ export class LoginComponent {
       console.error('Form is invalid');
     }
   }
+  navigateToAdmin() {
+    this.router.navigate(['/admin']);
+  }
 
   navigateToSignup() {
     this.router.navigate(['/signup']);

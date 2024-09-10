@@ -1,93 +1,89 @@
 .login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-family: "Montserrat", sans-serif;
 
   h2 {
+    text-align: center;
+    color: #374a67;
     font-size: 2rem;
-    color: #d9534f;
     margin-bottom: 2rem;
   }
 
   form {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    width: 100%;
-    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     .form-group {
-      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
 
       label {
-        display: block;
-        font-size: 1rem;
-        color: #333;
-        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: #374a67;
       }
 
-      .form-control {
-        width: 100%;
-        padding: 0.75rem;
+      input {
+        padding: 0.8rem;
         font-size: 1rem;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         transition: border-color 0.3s ease;
 
         &:focus {
-          border-color: #d9534f;
           outline: none;
+          border-color: #ef8354;
+          box-shadow: 0 0 5px rgba(239, 131, 84, 0.5);
         }
       }
 
       .error {
-        color: #d9534f;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
+        color: #e74c3c;
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
       }
     }
 
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
+    .btn-primary {
+      background-color: #ef8354;
+      color: white;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      margin-top: 1rem;
 
-      &.btn-primary {
-        background-color: #d9534f;
-        color: white;
-
-        &:hover {
-          background-color: #c9302c;
-        }
-
-        &:disabled {
-          background-color: #e6e6e6;
-          cursor: not-allowed;
-        }
+      &:hover {
+        background-color: #de764d;
       }
 
-      &.btn-link {
-        background: none;
-        color: #d9534f;
-        border: none;
-        font-size: 0.875rem;
-        text-decoration: underline;
-        cursor: pointer;
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
 
-        &:hover {
-          color: #c9302c;
-        }
+    .btn-link {
+      background: none;
+      border: none;
+      color: #374a67;
+      text-align: center;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ef8354;
       }
     }
   }

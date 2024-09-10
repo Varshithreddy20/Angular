@@ -1,51 +1,141 @@
-<div class="home-container">
-  <nav class="side-nav">
-    <a routerLink="/food">Food</a>
-    <a href="/food">FFOODD</a>
-    <a routerLink="/bookings">Bookings</a>
-  </nav>
-  <main class="main-content">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crave-Nest</title>
+  </head>
+  <body>
     <header>
-      <h1>Welcome to CraveNest</h1>
-      <button class="logout-btn" (click)="logout()">Logout</button>
+      <div class="container">
+        <nav>
+          <img src="/cravenestlogo.jpg" alt="Crave Nest Logo" class="logo" />
+          <div>
+            <a href="/food">FOOD</a>
+            <a href="/order">ORDER</a>
+            <a href="#menus">MENUS</a>
+            <a href="#gift-cards">GIFT CARDS</a>
+            <a href="/bookings">BOOKINGS</a>
+            <a href="/about">ABOUT</a>
+            <a href="/contact">CONTACT</a>
+          </div>
+
+          <div class="profile">
+            <a href="/profile">PROFILE</a>
+          </div>
+        </nav>
+      </div>
     </header>
-    <section class="about">
-      <h2>About CraveNest</h2>
-      <p>
-        CraveNest is a modern restaurant offering a unique dining experience
-        with a blend of traditional and contemporary cuisines.
-      </p>
-      <img
-        src="https://via.placeholder.com/400x300"
-        alt="CraveNest Interior"
-        class="restaurant-image"
-      />
-    </section>
-    <section class="featured">
-      <h2>Featured Dishes</h2>
-      <div class="featured-dishes">
-        <div class="dish">
-          <img
-            src="https://via.placeholder.com/200x200"
-            alt="Featured Dish 1"
-          />
-          <p>Signature Pasta</p>
-        </div>
-        <div class="dish">
-          <img
-            src="https://via.placeholder.com/200x200"
-            alt="Featured Dish 2"
-          />
-          <p>Gourmet Burger</p>
-        </div>
-        <div class="dish">
-          <img
-            src="https://via.placeholder.com/200x200"
-            alt="Featured Dish 3"
-          />
-          <p>Decadent Dessert</p>
-        </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>CRAVE NEST</h1>
+        <!-- <p>Have Your Cravings Here</p>-->
+        <a href="/order" class="cta-button">Order Now</a>
       </div>
     </section>
-  </main>
-</div>
+
+    <div class="container">
+      <section class="reviews">
+        <div class="review">
+          <img src="/foodimages.jpg" alt="Yelp" />
+          <h3>"It surpassed all my expectations!"</h3>
+          <p>
+            The food looks like it has been prepared for a culinary magazine.
+          </p>
+        </div>
+        <div class="review">
+          <img
+            src="data:image/jpeg;base64,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"
+            alt="TripAdvisor"
+          />
+          <h3>"Best vegetarian restaurant... EVER!"</h3>
+          <p>
+            I absolutely love this place. The Wings are the best things ever!!!
+          </p>
+        </div>
+        <div class="review">
+          <img
+            src="data:image/jpeg;base64,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"
+            alt="Happy Customer"
+          />
+          <h3>"Delicious food, good prices"</h3>
+          <p>
+            Very nice cozy place. Service was good, food delicious and so much
+            to choose from.
+          </p>
+        </div>
+      </section>
+
+      <section class="food-grid">
+        <div class="food-item">
+          <img
+            src="https://www.miops.com/cdn/shop/articles/Food_Photography___How_to_Take_Unique_and_Creative_Food_Photos_5.jpg?v=1661150733/300x200"
+            alt="Vegan Dish 1"
+          />
+        </div>
+        <div class="food-item">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1690263583138-155eca49f57d?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWVzdGhldGljJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D/300x200"
+            alt="Vegan Dish 2"
+          />
+        </div>
+        <div class="food-item">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpX8pWTTVVlpBI1sXpl5bV4nEfWz1zQQ8_ww4O41Ow_H9k2B4gOjxbTZUMD6UE96IfC9c&usqp=CAU/300x200"
+            alt="Vegan Dish 3"
+          />
+        </div>
+        <div class="food-item">
+          <img
+            src="https://www.miops.com/cdn/shop/articles/Food_Photography___How_to_Take_Unique_and_Creative_Food_Photos_5.jpg?v=1661150733/300x200"
+            alt="Vegan Dish 4"
+          />
+        </div>
+      </section>
+
+      <section class="about">
+        <h2>ABOUT our restaurant</h2>
+        <p>
+          Cravenest is a vibrant food destination that masterfully blends the
+          flavors of Italy, Japan, India, and Mexico, offering a truly unique
+          dining experience. Whether you're craving the rich, comforting taste
+          of Italian pasta, the delicate artistry of Japanese sushi, the bold
+          spices of Indian curry, or the lively zest of Mexican tacos, Cravenest
+          has something to tantalize every palate. With a menu that showcases a
+          diverse array of dishes, each prepared with fresh ingredients and
+          authentic techniques, Cravenest stands out as a culinary hub where
+          global cuisines come together. The welcoming atmosphere and attention
+          to detail make it a must-visit for food lovers seeking both variety
+          and quality.
+        </p>
+      </section>
+
+      <section class="order">
+        <h2>ORDER</h2>
+        <h3>Pick-Up & Delivery</h3>
+        <div>
+          <h4>CONTACTLESS TAKE-OUT</h4>
+          <p>To place an order for pickup, please order via Square</p>
+          <a href="#" class="cta-button">ORDER PICKUP</a>
+        </div>
+        <div>
+          <h4>DELIVERY EXPANDED</h4>
+          <p>
+            To place an order for delivery, please choose from one of our
+            partners below:
+          </p>
+          <a href="#" class="partner-button swiggy-button">Swiggy</a>
+          <a href="#" class="partner-button zomato-button">Zomato</a>
+          <a href="#" class="partner-button ubereats-button">UberEats</a>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Crave Nest BLR. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

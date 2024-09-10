@@ -1,41 +1,124 @@
-.food-container {
+/* food.page.scss */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
   display: flex;
-  height: 100vh;
+  flex-direction: column;
 }
-.cuisine-nav {
-  width: 200px;
-  background-color: #f0f0f0;
-  padding: 20px;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
-.cuisine-nav button {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
+
+header {
   background-color: #fff;
-  border: 1px solid #ddd;
-  cursor: pointer;
+  padding: 5px;
+  border-bottom: 1px solid #eee;
 }
-.food-content {
-  flex-grow: 1;
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.logo {
+  max-width: 60px;
+}
+
+main {
+  flex: 1;
   padding: 20px;
-  overflow-y: auto;
 }
-.food-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+
+.food-container {
+  margin-top: 50px;
 }
-.food-item {
-  border: 1px solid #ddd;
-  padding: 10px;
+
+.cuisine-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #4a0e0e;
+}
+
+.cuisine-nav button {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #f0f0f0;
+    outline: none;
+  }
+
+  &.active {
+    color: #4a0e0e;
+    border-bottom: 3px solid #4a0e0e;
+    font-weight: bold;
+  }
+}
+
+.food-content {
   text-align: center;
 }
-.food-item img {
-  max-width: 100%;
-  height: auto;
+
+.food-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 50px;
 }
+
+.food-item {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  text-align: center;
+}
+
+.food-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.food-item h3 {
+  margin: 15px 0;
+  font-size: 20px;
+}
+
+.food-item p {
+  margin-bottom: 10px;
+}
+
 .price {
-  font-weight: bold;
-  color: #4caf50;
+  font-size: 18px;
+  color: #550b03;
+}
+
+footer {
+  background-color: #4a0e0e;
+  color: #fff;
+  padding: 2px 0;
+  text-align: center;
 }
