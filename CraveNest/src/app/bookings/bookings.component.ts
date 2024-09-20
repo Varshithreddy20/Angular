@@ -1,48 +1,44 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { BookingsService } from '../bookings.service';
+import { BookingsModule } from './bookings.module';
 
 @Component({
   selector: 'app-bookings',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, HttpClientModule],
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.scss'],
 })
 export class BookingsComponent {
-  selectCuisine(_t22: any) {
-    throw new Error('Method not implemented.');
-  }
-
   booking = {
     name: '',
     email: '',
     phone: '',
     persons: 1,
-    date: '',
-    time: '',
+    status: 'pending',
+    // Keeping date and time for future use when uncommented
+    // date: '',
+    // time: ''
   };
-
-  cuisines: any;
-  selectedCuisine: any;
-  item: any;
 
   constructor(private bookingsService: BookingsService) {}
 
   onSubmit() {
+    // You can enable this section when date and time inputs are available
+    /*
     const formattedDateTime = this.changeDateFormate(
       this.booking.date,
       this.booking.time
     );
     const [formattedDate, formattedTime] = formattedDateTime.split('T');
+    */
 
     const formattedBooking = {
       ...this.booking,
-      date: formattedDate,
-      time: formattedTime,
+      // Uncomment once you bring date and time inputs back
+      // date: formattedDate,
+      // time: formattedTime,
     };
 
     this.bookingsService.createBooking(formattedBooking).subscribe(
@@ -55,21 +51,20 @@ export class BookingsComponent {
     );
   }
 
-  // Method to change date and time format
+  // This method can be used when date and time are reintroduced
+  /*
   private changeDateFormate = (
     date: string,
     time: string,
     format: string = '-'
   ): string => {
-    let dateobj = new Date(date);
-    let parts = time.match(/(\d+):(\d+)/);
-    if (!parts) {
-      throw new Error('Invalid time format');
-    }
-    let hours = parseInt(parts[1], 10);
-    let minutes = parseInt(parts[2], 10);
+    const dateobj = new Date(date);
+    const parts = time.match(/(\d+):(\d+)/);
 
-    hours = hours % 24;
+    if (!parts) throw new Error('Invalid time format');
+
+    const hours = parseInt(parts[1], 10) % 24;
+    const minutes = parseInt(parts[2], 10);
 
     dateobj.setHours(hours, minutes, 0, 0);
 
@@ -89,4 +84,5 @@ export class BookingsComponent {
       ].join(':')
     );
   };
+  */
 }

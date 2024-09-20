@@ -1,68 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CraveNest - Food</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- Header Section -->
-    <header>
-      <div class="container">
-        <nav>
-          <img src="/cravenestlogo.jpg" alt="Crave Nest Logo" class="logo" />
-          <div>
-            <a href="/home">HOME</a>
-            <a href="/food">FOOD</a>
-            <a href="/order">ORDER</a>
-            <a href="#menus">MENUS</a>
-            <a href="#gift-cards">GIFT CARDS</a>
-            <a href="/bookings">BOOKINGS</a>
-            <a href="/about">ABOUT</a>
-          </div>
+<app-header></app-header>
 
-          <div class="profile">
-            <a href="/profile">PROFILE</a>
-          </div>
-        </nav>
-      </div>
-    </header>
+<div class="hero">
+  <img src="images/aboutbgdark.jpg" alt="Background" class="hero-bg" />
+  <img src="images/logowithoutbg.jpg" alt="CraveNest Logo" class="hero-logo" />
+</div>
 
-    <!-- Main Section -->
-    <div class="container">
-      <div class="logo-section">
-        <!-- Logo -->
-        <img src="/cravenestlogo.jpg" alt="CraveNest Logo" class="main-logo" />
+<div class="contact-content">
+  <div class="contact-info">
+    <h2>Reach Out & Savor</h2>
+    <ul>
+      <li>
+        <i class="fas fa-map-marker-alt"></i> 123 Foodie Street, Bangalore,
+        India
+      </li>
+      <li><i class="fas fa-phone"></i> +91 9515318626</li>
+      <li><i class="fas fa-envelope"></i> feast.com</li>
+      <li><i class="fas fa-clock"></i> Mon-Sat: 11:00 AM - 10:00 PM</li>
+    </ul>
+    <h3>Join Our Culinary Community</h3>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+  <div class="reservation-preview">
+    <h2>Reserve Your Culinary Adventure</h2>
+    <p>
+      Don't miss out on an unforgettable dining experience! Secure your table
+      now and prepare for a journey of flavors.
+    </p>
+    <p>
+      <a href="/bookings" class="cta-button">MAKE A RESERVATION</a>
+    </p>
+    <h3>Explore Our Gastronomic Wonders</h3>
+    <p>
+      Curious about our culinary creations? Dive into our menu and discover a
+      world of taste sensations.
+    </p>
+    <p><a href="/food" class="cta-button">EXPLORE OUR MENU</a></p>
+  </div>
+</div>
 
-        <!-- Info Section -->
-        <div class="info">
-          <ul>
-            <li>
-              <i class="fas fa-envelope"></i>
-              contact.com
-            </li>
-            <li>
-              <i class="fas fa-map-marker-alt"></i>
-              123 Foodie Street, Bangalore, India
-            </li>
-            <li>
-              <i class="fas fa-calendar"></i>
-              Since 2000
-            </li>
-          </ul>
-        </div>
+<div class="featured-dishes">
+  <h2>Signature Delights Await You</h2>
+  <div class="dishes-grid">
+    <div class="dish-card">
+      <img src="images/Tacos.jpg" alt="Tacos" />
+      <div class="dish-info">
+        <h3>Tacos</h3>
+        <p>
+          Succulent chicken infused with aromatic spices, slow-cooked to
+          perfection in our traditional tandoor.
+        </p>
       </div>
     </div>
-
-    <!-- Footer Section -->
-    <footer>
-      <div class="container">
-        <p>&copy; 2024 Crave Nest BLR. All rights reserved.</p>
+    <div class="dish-card">
+      <img src="images/pannertikkamasala.jpg" alt="Paneer Tikka Masala" />
+      <div class="dish-info">
+        <h3>Paneer Tikka Masala</h3>
+        <p>
+          Chargrilled paneer cubes simmered in a luscious, creamy tomato sauce -
+          a vegetarian's dream come true.
+        </p>
       </div>
-    </footer>
-  </body>
-</html>
+    </div>
+    <div class="dish-card">
+      <img src="images/naan.jpg" alt="Butter Garlic Naan" />
+      <div class="dish-info">
+        <h3>Butter Garlic Naan</h3>
+        <p>
+          Pillowy soft flatbread, generously brushed with garlic-infused butter
+          - the perfect companion to any curry.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

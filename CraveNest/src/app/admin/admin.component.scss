@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f5f7fa;
+$text-color: #34495e;
+$border-color: #bdc3c7;
+
+.admin-panel {
+  font-family: "Roboto", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: $background-color;
+  color: $text-color;
+
+  h2 {
+    font-size: 2.5rem;
+    color: $primary-color;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+
+    h3 {
+      font-size: 1.8rem;
+      color: $primary-color;
+      margin-bottom: 20px;
+      border-bottom: 2px solid $border-color;
+      padding-bottom: 10px;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid $border-color;
+    }
+
+    th {
+      background-color: $primary-color;
+      color: white;
+      font-weight: 500;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e6e6e6;
+    }
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &:disabled {
+      background-color: #bdc3c7;
+      cursor: not-allowed;
+    }
+
+    & + button {
+      margin-left: 8px;
+    }
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      margin-bottom: 15px;
+    }
+
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+
+      &:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// Custom styles for specific elements
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &.pending {
+    background-color: #f39c12;
+    color: white;
+  }
+
+  &.accepted {
+    background-color: $secondary-color;
+    color: white;
+  }
+
+  &.declined {
+    background-color: #e74c3c;
+    color: white;
+  }
+}
+
+.availability-toggle {
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:checked {
+      background-color: $secondary-color;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      background-color: white;
+      transition: transform 0.3s ease;
+    }
+
+    &:checked:before {
+      transform: translateX(20px);
+    }
+  }
+
+  label {
+    margin-left: 8px;
+  }
+}

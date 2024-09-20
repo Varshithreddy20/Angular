@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
-  imports: [],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}

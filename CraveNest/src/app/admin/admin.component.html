@@ -1,1 +1,133 @@
-<p>admin works!</p>
+<div class="admin-panel">
+  <h2>Admin Panel</h2>
+
+  <section>
+    <h3>Bookings</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Persons</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td data-label="Name">{{ booking.name }}</td>
+          <td data-label="Email">{{ booking.email }}</td>
+          <td data-label="Phone">{{ booking.phone }}</td>
+          <td data-label="Persons">{{ booking.persons }}</td>
+          <td data-label="Date">{{ booking.date }}</td>
+          <td data-label="Time">{{ booking.time }}</td>
+          <td data-label="Status">
+            <span class="status-badge" [ngClass]="booking.status">{{
+              booking.status
+            }}</span>
+          </td>
+          <td data-label="Actions">
+            <button
+              (click)="updateBookingStatus(booking, 'accepted')"
+              [disabled]="booking.status === 'accepted'"
+            >
+              Accept
+            </button>
+            <button
+              (click)="updateBookingStatus(booking, 'declined')"
+              [disabled]="booking.status === 'declined'"
+            >
+              Decline
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>Orders</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Items</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td data-label="Customer">{{ order.customerName }}</td>
+          <td data-label="Items">
+            <ul>
+              <li *ngFor="let item of order.items">
+                {{ item.name }} (x{{ item.quantity }})
+              </li>
+            </ul>
+          </td>
+          <td data-label="Total">{{ order.total | currency }}</td>
+          <td data-label="Status">
+            <span class="status-badge" [ngClass]="order.status">{{
+              order.status
+            }}</span>
+          </td>
+          <td data-label="Actions">
+            <button
+              (click)="updateOrderStatus(order, 'accepted')"
+              [disabled]="order.status === 'accepted'"
+            >
+              Accept
+            </button>
+            <button
+              (click)="updateOrderStatus(order, 'declined')"
+              [disabled]="order.status === 'declined'"
+            >
+              Decline
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h3>Food Items</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Cuisine</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of foodItems">
+          <td data-label="Name">{{ item.name }}</td>
+          <td data-label="Description">{{ item.description }}</td>
+          <td data-label="Price">{{ item.price | currency }}</td>
+          <td data-label="Cuisine">{{ item.cuisine }}</td>
+          <td data-label="Availability">
+            <div class="availability-toggle">
+              <input
+                type="checkbox"
+                [id]="'toggle-' + item.id"
+                [checked]="item.available"
+                (change)="toggleFoodAvailability(item)"
+              />
+              <label [for]="'toggle-' + item.id">{{
+                item.available ? "Available" : "Unavailable"
+              }}</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

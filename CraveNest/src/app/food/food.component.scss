@@ -1,4 +1,3 @@
-/* food.page.scss */
 body,
 html {
   margin: 0;
@@ -10,32 +9,24 @@ html {
   flex-direction: column;
 }
 
+.profile,
+.login {
+  margin-left: auto;
+}
+
+.login,
+.logout {
+  margin-left: 20px;
+}
+
+.profile-menu {
+  display: none;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-header {
-  background-color: #fff;
-  padding: 5px;
-  border-bottom: 1px solid #eee;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav a {
-  color: #333;
-  text-decoration: none;
-  margin-left: 20px;
-}
-
-.logo {
-  max-width: 60px;
 }
 
 main {
@@ -80,6 +71,27 @@ main {
 .food-content {
   text-align: center;
 }
+.food-content button {
+  display: inline-block;
+  background-color: #6b6462; /* Consistent with the palette */
+  color: #fff; /* Soft, lighter text color */
+  padding: 7px 12px; /* Reduced padding for a sleeker button */
+  border: none; /* Remove border */
+  border-radius: 6px; /* Softer rounding */
+  font-size: 10px; /* Slightly smaller for a compact look */
+  font-weight: bold; /* Emphasize text */
+  text-transform: uppercase; /* Consistent text style */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+
+  &:hover {
+    background-color: #3c3434; /* Lighter on hover for contrast */
+    color: #f3cbb2; /* Clearer hover text */
+  }
+
+  &:active {
+    background-color: #866a5e; /* Darker on active for feedback */
+  }
+}
 
 .food-items {
   display: grid;
@@ -94,31 +106,36 @@ main {
   max-width: 250px;
   height: auto;
   text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
 .food-item img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 200px; /* Uniform image height */
+  object-fit: cover; /* Ensure images cover the space evenly */
+  border-radius: 10px; /* Smooth rounding */
+  margin-bottom: 15px;
 }
 
 .food-item h3 {
   margin: 15px 0;
   font-size: 20px;
+  color: #3a2121;
 }
 
 .food-item p {
   margin-bottom: 10px;
+  color: #666;
 }
 
 .price {
   font-size: 18px;
   color: #550b03;
-}
-
-footer {
-  background-color: #4a0e0e;
-  color: #fff;
-  padding: 2px 0;
-  text-align: center;
 }

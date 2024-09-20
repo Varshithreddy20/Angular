@@ -1,7 +1,3 @@
-.contact {
-  background-color: #3a2121;
-}
-
 body,
 html {
   margin: 0;
@@ -16,65 +12,156 @@ html {
   padding: 0 20px;
 }
 
-header {
-  background-color: #fff;
-  padding: 10px 0;
-  border-bottom: 0px solid #eee;
+/* Header, Nav, and Footer */
+.profile,
+.login {
+  margin-left: auto;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav a {
-  color: #333;
-  text-decoration: none;
+.login,
+.logout {
   margin-left: 20px;
 }
 
-.logo {
-  max-width: 70px;
+.profile-menu {
+  display: none;
 }
 
-footer {
-  background-color: #412828;
-  color: #fff;
-  padding: 2px 0;
-  text-align: center;
-}
-
-/* Updated styles for the logo section and info */
-.logo-section {
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 350px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 20px 0;
 }
 
-.main-logo {
-  max-width: 150px;
-  margin-right: 20px;
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(50%);
 }
 
-.info {
-  color: #fff;
-  background-color: #3a2121;
+.hero-logo {
+  max-width: 1000px;
+  z-index: 1;
+}
+
+/* Contact & Reservations Section */
+.contact-content {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info,
+.reservation-preview {
+  flex-basis: 48%;
   padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
-.info ul {
+.contact-info h2,
+.reservation-preview h2 {
+  color: #3a2121;
+  margin-bottom: 15px;
+}
+
+.contact-info ul {
   list-style: none;
   padding: 0;
 }
 
-.info li {
-  margin-bottom: 10px;
+.contact-info li {
+  margin-bottom: 15px;
   font-size: 16px;
 }
 
-.info i {
-  margin-right: 8px;
-  color: #ffa500; /* Orange for the icons */
+.contact-info i {
+  margin-right: 10px;
+  color: #6b6462;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #333;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.reservation-preview p {
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #625049;
+  color: #f5f5f5;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #8f8c84;
+}
+
+/* Featured Dishes */
+.featured-dishes {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.featured-dishes h2 {
+  color: #3a2121;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dish-card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-10px);
+}
+
+.dish-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.dish-info {
+  padding: 20px;
+}
+
+.dish-info h3 {
+  margin: 0 0 10px 0;
+  color: #3a2121;
 }

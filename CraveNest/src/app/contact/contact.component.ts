@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
-  imports: [],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent {
-
-}
+export class ContactComponent {}

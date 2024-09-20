@@ -5,29 +5,18 @@ html {
   font-family: Arial, sans-serif;
   color: #333;
 }
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.profile,
+.login {
+  margin-left: auto;
 }
-header {
-  background-color: #fff;
-  padding: 5px 0;
-  border-bottom: 0px solid #eee;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-nav a {
-  color: #333;
-  text-decoration: none;
+.login,
+.logout {
   margin-left: 20px;
 }
-.logo {
-  max-width: 60px;
+.profile-menu {
+  display: none;
 }
+
 .hero {
   background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-size: cover;

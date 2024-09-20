@@ -1,89 +1,185 @@
-.signup-container {
-  max-width: 450px;
-  margin: 5rem auto;
-  padding: 2.5rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  font-family: "Montserrat", sans-serif;
+.signup-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: white;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
 
-  h2 {
-    text-align: center;
-    color: #374a67;
-    font-size: 2.4rem;
-    margin-bottom: 2.5rem;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
   }
 
-  form {
+  &::before {
+    background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &::after {
+    background-color: rgba(228, 173, 95, 0.7);
+  }
+
+  .signup-container {
+    position: relative;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: rem;
+    z-index: 1;
 
-    .form-group {
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    form {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      width: 100%;
+      max-width: 600px;
 
-      label {
-        font-size: 1.2rem;
-        color: #374a67;
-      }
+      // Match input styling with login form
+      .form-group {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        padding: rem;
 
-      input {
-        padding: 0.9rem;
-        font-size: 1.1rem;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        transition: border-color 0.3s ease;
+        input {
+          flex: 1;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          border: none;
+          background-color: transparent;
+          color: #333;
+          border-radius: 25px; // Add rounded corners
 
-        &:focus {
-          outline: none;
-          border-color: #ef8354;
-          box-shadow: 0 0 6px rgba(239, 131, 84, 0.5);
+          &::placeholder {
+            color: #999;
+          }
+
+          &:focus {
+            outline: none;
+            background-color: #f0f0f0; // Add a focus effect
+          }
         }
       }
 
-      .error {
-        color: #e74c3c;
-        font-size: 0.9rem;
-        margin-top: 0.2rem;
+      // Button styling similar to login page
+      button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        background-color: #e0e0e0;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 1rem;
+
+        &:hover {
+          background-color: #d0d0d0;
+        }
       }
     }
 
-    .btn-primary {
-      background-color: #ef8354;
-      color: white;
-      padding: 0.9rem;
-      font-size: 1.3rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .additional-options {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
 
-      &:hover {
-        background-color: #de764d;
+      button {
+        background: none;
+        border: none;
+        color: black;
+        font-family: bolder;
+        font-size: large;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Keep food images styling similar to login page
+  .food-images {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(to top, white 0%, rgba(255, 255, 255, 0) 100%);
+
+    .food-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      margin: 0 -1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .error {
+    color: red;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .signup-container {
+      h1 {
+        font-size: 3rem;
       }
 
-      &:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
+      form {
+        .form-group {
+          width: 100%;
+          padding: 1rem;
+          margin-bottom: 1rem;
+
+          input {
+            border-radius: 25px;
+            background-color: white;
+          }
+        }
+
+        button {
+          width: 100%;
+          border-radius: 25px;
+        }
       }
     }
 
-    .btn-link {
-      background: none;
-      border: none;
-      color: #374a67;
-      text-align: center;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      text-decoration: underline;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: #ef8354;
+    .food-images {
+      .food-image {
+        width: 100px;
+        height: 100px;
       }
     }
   }

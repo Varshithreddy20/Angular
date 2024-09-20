@@ -1,63 +1,71 @@
-<div class="login-container">
-  <h2>Login Page</h2>
-  <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
-    <!-- Email Input -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        formControlName="email"
-        class="form-control"
-        placeholder="Enter your email"
-      />
-      <div
-        *ngIf="
-          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-        "
-        class="error"
-      >
-        Valid email is required.
+<div class="login-page">
+  <div class="login-container">
+    <h1>Crave Nest</h1>
+    <h2>Where Cravings Come True</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogIn()">
+      <div class="form-group-row">
+        <div class="form-group">
+          <input
+            type="email"
+            formControlName="emailId"
+            placeholder="Email"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            "
+            class="error"
+          >
+            Valid email is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
+            class="error"
+          >
+            Password must be at least 6 characters long.
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </button>
       </div>
+    </form>
+
+    <div class="additional-options">
+      <button type="button" class="btn btn-link" (click)="navigateToSignup()">
+        Don't have an account? Sign Up
+      </button>
+      <button type="button" class="btn btn-link" (click)="navigateToAdmin()">
+        Admin
+      </button>
     </div>
+  </div>
 
-    <!-- Password Input -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        formControlName="password"
-        class="form-control"
-        placeholder="Enter your password"
-      />
-      <div
-        *ngIf="
-          loginForm.get('password')?.invalid &&
-          loginForm.get('password')?.touched
-        "
-        class="error"
-      >
-        Password must be at least 6 characters long.
-      </div>
+  <div class="food-images">
+    <div class="food-images-wrapper">
+      <img src="images/loginimage2.png" alt="Food Image 2" class="food-image" />
+      <img src="images/loginimage3.png" alt="Food Image 3" class="food-image" />
+      <img src="images/loginimage4.png" alt="Food Image 4" class="food-image" />
+      <img src="images/loginimage3.png" alt="Food Image 3" class="food-image" />
     </div>
-
-    <!-- Submit Button -->
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="loginForm.invalid"
-    >
-      Login
-    </button>
-
-    <!-- Navigate to Signup Button -->
-    <button type="button" class="btn btn-link" (click)="navigateToSignup()">
-      Don't have an account? Sign Up
-    </button>
-
-    <button type="button" class="btn btn-link" (click)="navigateToAdmin()">
-      Admin
-    </button>
-  </form>
+  </div>
 </div>
