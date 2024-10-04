@@ -1,28 +1,46 @@
 <app-header></app-header>
-<nav class="cuisine-nav">
-  <button
-    *ngFor="let cuisine of cuisines"
-    (click)="selectCuisine(cuisine)"
-    [class.active]="cuisine === selectedCuisine"
-  >
-    {{ cuisine }}
-  </button>
-</nav>
 
-<main class="food-content">
-  <h2>{{ selectedCuisine }}</h2>
+<div class="food-ordering">
+  <nav class="cuisine-nav">
+    <button
+      *ngFor="let cuisine of cuisines"
+      (click)="selectCuisine(cuisine)"
+      [class.active]="cuisine === selectedCuisine"
+    >
+      {{ cuisine }}
+    </button>
+  </nav>
+
   <div class="food-items">
-    <div *ngFor="let item of filteredFoodItems" class="food-item">
+    <div
+      *ngFor="let item of filteredFoodItems"
+      class="food-item"
+      [class.in-cart]="isInCart(item)"
+    >
       <img [src]="item.image" [alt]="item.name" />
-      <h3>{{ item.name }}</h3>
-      <p>{{ item.description }}</p>
-      <p class="price">{{ item.price | currency }}</p>
-      <button (click)="addToCart(item)" [disabled]="!item.available">
-        {{ item.available ? "Add to Cart" : "Not Available" }}
-      </button>
+      <div class="food-info">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p class="price">{{ item.price | currency }}</p>
+        <div class="cart-controls">
+          <button
+            *ngIf="!isInCart(item)"
+            class="add-to-cart"
+            (click)="addToCart(item)"
+            [disabled]="!item.available"
+          >
+            {{ item.available ? "Add to Cart" : "Not Available" }}
+          </button>
+          <div *ngIf="isInCart(item)" class="quantity-controls">
+            <button (click)="decreaseQuantity(item)">-</button>
+            <span>{{ getCartItemQuantity(item) }}</span>
+            <button (click)="increaseQuantity(item)">+</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</main>
+</div>
 
 <!-- Footer Section -->
 <app-footer></app-footer>

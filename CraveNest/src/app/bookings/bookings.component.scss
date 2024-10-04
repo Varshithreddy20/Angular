@@ -9,17 +9,6 @@ html {
   font-family: Arial, sans-serif;
   color: #333;
 }
-.profile,
-.login {
-  margin-left: auto;
-}
-.login,
-.logout {
-  margin-left: 20px;
-}
-.profile-menu {
-  display: none;
-}
 
 .container {
   max-width: 1200px;
@@ -43,10 +32,6 @@ nav a {
   color: #333;
   text-decoration: none;
   margin-left: 20px;
-}
-
-.logo {
-  max-width: 60px;
 }
 
 main {
@@ -94,7 +79,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3); /* Lightened the overlay */
 }
 
 .bookings-container {
@@ -150,6 +135,7 @@ button {
 button:hover {
   background-color: #735e10c0;
 }
+
 footer {
   background-color: #3d3737;
   color: #fff;

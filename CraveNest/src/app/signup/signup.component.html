@@ -1,17 +1,16 @@
 <div class="signup-page">
   <div class="signup-container">
-    <h1>Crave Nest</h1>
-    <h2>Create Your Account</h2>
+    <h1 class="title">Crave Nest</h1>
+    <h2 class="subtitle">Create Your Account</h2>
 
     <form [formGroup]="SignUpForm" (ngSubmit)="onSignUp()">
       <div class="form-group">
-        <label for="name">Name</label>
         <input
           type="text"
           id="name"
           formControlName="name"
           class="form-control"
-          placeholder="Enter your name"
+          placeholder="Username"
         />
         <div
           *ngIf="
@@ -24,17 +23,17 @@
       </div>
 
       <div class="form-group">
-        <label for="emailId">Email</label>
         <input
           type="email"
           id="email"
           formControlName="emailId"
           class="form-control"
-          placeholder="Enter your email"
+          placeholder="Email"
         />
         <div
           *ngIf="
-            SignUpForm.get('email')?.invalid && SignUpForm.get('email')?.touched
+            SignUpForm.get('emailId')?.invalid &&
+            SignUpForm.get('emailId')?.touched
           "
           class="error"
         >
@@ -43,13 +42,12 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
         <input
           type="password"
           id="password"
           formControlName="password"
           class="form-control"
-          placeholder="Enter your password"
+          placeholder="Password"
         />
         <div
           *ngIf="
@@ -70,12 +68,11 @@
         Sign Up
       </button>
     </form>
+
     <div class="additional-options">
       <button type="button" class="btn btn-link" (click)="navigateToLogin()">
         Already have an account? Login
       </button>
     </div>
-
-    <div class="food-images"></div>
   </div>
 </div>

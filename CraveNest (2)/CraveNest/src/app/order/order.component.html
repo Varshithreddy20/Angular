@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<main class="order-content">
+  <h2>Your Order</h2>
+  <ul *ngIf="cartItems.length > 0; else emptyCart">
+    <li *ngFor="let item of cartItems">
+      <img [src]="item.image" [alt]="item.name" class="item-image" />
+      <div class="item-details">
+        <span>{{ item.name }}</span>
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity(item)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQuantity(item)">+</button>
+        </div>
+        <span>{{ item.price * item.quantity | currency }}</span>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty!</p>
+  </ng-template>
+
+  <p *ngIf="cartItems.length > 0">Total: {{ totalPrice | currency }}</p>
+
+  <button
+    class="clear-cart-btn"
+    (click)="clearCart()"
+    [disabled]="cartItems.length === 0"
+  >
+    Clear Cart
+  </button>
+
+  <button
+    class="checkout-btn"
+    [disabled]="cartItems.length === 0"
+    (click)="placeOrder()"
+  >
+    Place Order
+  </button>
+</main>
+
+<app-footer></app-footer>

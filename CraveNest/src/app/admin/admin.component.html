@@ -1,44 +1,69 @@
 <div class="admin-panel">
   <h2>Admin Panel</h2>
 
-  <section>
+  <div class="tabs">
+    <button
+      (click)="activeTab = 'bookings'"
+      [class.active]="activeTab === 'bookings'"
+    >
+      Bookings
+    </button>
+    <button
+      (click)="activeTab = 'orders'"
+      [class.active]="activeTab === 'orders'"
+    >
+      Orders
+    </button>
+    <button
+      (click)="activeTab = 'food-items'"
+      [class.active]="activeTab === 'food-items'"
+    >
+      Food Items
+    </button>
+  </div>
+
+  <!-- Bookings Section -->
+  <!-- Bookings Section -->
+  <section *ngIf="activeTab === 'bookings'">
     <h3>Bookings</h3>
     <table>
       <thead>
         <tr>
+          <th>Booking ID</th>
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Persons</th>
-          <th>Date</th>
-          <th>Time</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let booking of bookings">
-          <td data-label="Name">{{ booking.name }}</td>
-          <td data-label="Email">{{ booking.email }}</td>
-          <td data-label="Phone">{{ booking.phone }}</td>
-          <td data-label="Persons">{{ booking.persons }}</td>
-          <td data-label="Date">{{ booking.date }}</td>
-          <td data-label="Time">{{ booking.time }}</td>
-          <td data-label="Status">
-            <span class="status-badge" [ngClass]="booking.status">{{
-              booking.status
-            }}</span>
+          <td>{{ booking.bookingId }}</td>
+          <td>{{ booking.name }}</td>
+          <td>{{ booking.email }}</td>
+          <td>{{ booking.phone }}</td>
+          <td>{{ booking.persons }}</td>
+          <td
+            [ngClass]="{
+              'accepted-status': booking.status === 'accepted',
+              'pending-status': booking.status === 'pending',
+              'declined-status': booking.status === 'declined'
+            }"
+          >
+            {{ booking.status }}
           </td>
-          <td data-label="Actions">
+          <td>
             <button
+              class="accept"
               (click)="updateBookingStatus(booking, 'accepted')"
-              [disabled]="booking.status === 'accepted'"
             >
               Accept
             </button>
             <button
+              class="decline"
               (click)="updateBookingStatus(booking, 'declined')"
-              [disabled]="booking.status === 'declined'"
             >
               Decline
             </button>
@@ -48,86 +73,105 @@
     </table>
   </section>
 
-  <section>
+  <!-- Orders Section -->
+  <section *ngIf="activeTab === 'orders'">
     <h3>Orders</h3>
     <table>
       <thead>
         <tr>
+          <th>Order ID</th>
           <th>Customer</th>
-          <th>Items</th>
-          <th>Total</th>
+          <th>Email</th>
+          <th>Total Amount</th>
+          <th>Date & Time</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let order of orders">
-          <td data-label="Customer">{{ order.customerName }}</td>
-          <td data-label="Items">
-            <ul>
-              <li *ngFor="let item of order.items">
-                {{ item.name }} (x{{ item.quantity }})
-              </li>
-            </ul>
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.customerEmail }}</td>
+
+          <td>{{ order.totalAmount | currency }}</td>
+          <td>{{ order.createdAt | date : "short" }}</td>
+          <td
+            [ngClass]="{
+              'accepted-status': order.status === 'Accepted',
+              'pending-status': order.status === 'Pending',
+              'declined-status': order.status === 'Declined'
+            }"
+          >
+            {{ order.status }}
           </td>
-          <td data-label="Total">{{ order.total | currency }}</td>
-          <td data-label="Status">
-            <span class="status-badge" [ngClass]="order.status">{{
-              order.status
-            }}</span>
-          </td>
-          <td data-label="Actions">
+          <td>
             <button
-              (click)="updateOrderStatus(order, 'accepted')"
-              [disabled]="order.status === 'accepted'"
+              class="accept"
+              (click)="updateOrderStatus(order, 'Accepted')"
             >
               Accept
             </button>
             <button
-              (click)="updateOrderStatus(order, 'declined')"
-              [disabled]="order.status === 'declined'"
+              class="decline"
+              (click)="updateOrderStatus(order, 'Declined')"
             >
               Decline
             </button>
+            <button class="view" (click)="viewOrderDetails(order)">View</button>
           </td>
         </tr>
       </tbody>
     </table>
   </section>
 
-  <section>
+  <!-- Food Items Section -->
+  <section *ngIf="activeTab === 'food-items'">
     <h3>Food Items</h3>
     <table>
       <thead>
         <tr>
           <th>Name</th>
-          <th>Description</th>
           <th>Price</th>
-          <th>Cuisine</th>
           <th>Availability</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of foodItems">
-          <td data-label="Name">{{ item.name }}</td>
-          <td data-label="Description">{{ item.description }}</td>
-          <td data-label="Price">{{ item.price | currency }}</td>
-          <td data-label="Cuisine">{{ item.cuisine }}</td>
-          <td data-label="Availability">
-            <div class="availability-toggle">
-              <input
-                type="checkbox"
-                [id]="'toggle-' + item.id"
-                [checked]="item.available"
-                (change)="toggleFoodAvailability(item)"
-              />
-              <label [for]="'toggle-' + item.id">{{
-                item.available ? "Available" : "Unavailable"
-              }}</label>
-            </div>
+        <tr *ngFor="let food of foodItems">
+          <td>{{ food.name }}</td>
+          <td>{{ food.price | currency }}</td>
+          <td>
+            <input
+              type="checkbox"
+              [checked]="food.available"
+              (change)="toggleFoodAvailability(food)"
+            />
+            <label>{{ food.available ? "Available" : "Unavailable" }}</label>
           </td>
         </tr>
       </tbody>
     </table>
   </section>
+
+  <!-- Model for displaying order details -->
+  <div *ngIf="selectedOrder" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="selectedOrder = null">&times;</span>
+      <h2>Order Details</h2>
+      <p><strong>Order ID:</strong> {{ selectedOrder.orderId }}</p>
+      <p><strong>Customer Name:</strong> {{ selectedOrder.customerName }}</p>
+      <p><strong>Email:</strong> {{ selectedOrder.customerEmail }}</p>
+      <p>
+        <strong>Total Amount:</strong>
+        {{ selectedOrder.totalAmount | currency }}
+      </p>
+      <h3>Items:</h3>
+      <ul>
+        <li *ngFor="let item of selectedOrder.items">
+          {{ item.foodItemName }} - {{ item.quantity }} x
+          {{ item.unitPrice | currency }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

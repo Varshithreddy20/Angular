@@ -69,14 +69,17 @@
 
           input {
             width: 100%;
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
+            padding: 1.2rem 1.5rem; /* Adjust padding for more space */
+            font-size: 1.1rem; /* Increase font size */
             border: none;
             background-color: transparent;
             color: #333;
+            line-height: 1.5;
 
             &::placeholder {
               color: #999;
+              font-size: 1rem; /* Reduce placeholder size */
+              opacity: 0.8; /* Slightly reduce opacity */
             }
 
             &:focus {
@@ -149,6 +152,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
+
   .error {
     color: red;
     font-style: italic;
@@ -186,6 +190,7 @@
         }
       }
     }
+
     .error {
       color: red;
       font-style: italic;

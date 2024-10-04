@@ -1,196 +1,237 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
-
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$background-color: #f5f7fa;
-$text-color: #34495e;
-$border-color: #bdc3c7;
-
+/* Basic styles for the admin panel */
 .admin-panel {
-  font-family: "Roboto", sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: $background-color;
-  color: $text-color;
+  padding: 40px; /* Increased padding for more breathing room */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f7f7; /* Light background for cleaner look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
-  h2 {
-    font-size: 2.5rem;
-    color: $primary-color;
-    margin-bottom: 30px;
-    text-align: center;
-  }
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
 
-  section {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 30px;
-
-    h3 {
-      font-size: 1.8rem;
-      color: $primary-color;
-      margin-bottom: 20px;
-      border-bottom: 2px solid $border-color;
-      padding-bottom: 10px;
-    }
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-
-    th,
-    td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid $border-color;
-    }
-
-    th {
-      background-color: $primary-color;
-      color: white;
-      font-weight: 500;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    tr:hover {
-      background-color: #e6e6e6;
-    }
-  }
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 
   button {
-    background-color: $primary-color;
-    color: white;
+    padding: 10px 25px;
+    margin: 0 10px;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    background-color: #e0e0e0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.2s;
+
+    &.active {
+      background-color: #4caf50;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: #d5d5d5;
     }
 
-    &:disabled {
-      background-color: #bdc3c7;
-      cursor: not-allowed;
-    }
-
-    & + button {
-      margin-left: 8px;
-    }
-  }
-
-  input[type="checkbox"] {
-    margin-right: 8px;
-  }
-
-  // Responsive design
-  @media (max-width: 768px) {
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-      display: block;
-    }
-
-    thead tr {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
-    }
-
-    tr {
-      margin-bottom: 15px;
-    }
-
-    td {
-      border: none;
-      position: relative;
-      padding-left: 50%;
-
-      &:before {
-        content: attr(data-label);
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        font-weight: bold;
-      }
+    &:focus {
+      outline: none;
     }
   }
 }
 
-// Custom styles for specific elements
-.status-badge {
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+
+  th,
+  td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+  }
+
+  th {
+    background-color: #f8f8f8;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333;
+  }
+
+  tr {
+    transition: background-color 0.2s;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+  td.status {
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+/* Button styles for Accept, Decline, View */
+button {
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &.accept {
+    background-color: #4caf50; /* Green for Accept */
+    color: white;
+    box-shadow: 0 2px 5px rgba(76, 175, 80, 0.4);
+  }
+
+  &.decline {
+    background-color: #f44336; /* Red for Decline */
+    color: white;
+    box-shadow: 0 2px 5px rgba(244, 67, 54, 0.4);
+  }
 
   &.pending {
-    background-color: #f39c12;
+    background-color: #ff9800; /* Orange for Pending */
     color: white;
   }
 
-  &.accepted {
-    background-color: $secondary-color;
+  &.view {
+    background-color: #2196f3; /* Blue for View */
     color: white;
+    box-shadow: 0 2px 5px rgba(33, 150, 243, 0.4);
   }
 
-  &.declined {
-    background-color: #e74c3c;
-    color: white;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
-.availability-toggle {
-  display: flex;
-  align-items: center;
+/* Status column colors */
+.accepted-status {
+  background-color: #81c784; /* Softer green */
+  color: white;
+  padding: 6px 12px; /* Reduced padding */
+  border-radius: 12px; /* More rounded */
+  font-size: 14px; /* Slightly smaller font */
+  text-transform: capitalize; /* Capitalize the first letter */
+  display: inline-block;
+  text-align: center;
+}
 
-  input[type="checkbox"] {
-    appearance: none;
-    width: 40px;
-    height: 20px;
-    background-color: #ccc;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.pending-status {
+  background-color: #ffb74d; /* Softer orange */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: inline-block;
+  text-align: center;
+}
 
-    &:checked {
-      background-color: $secondary-color;
-    }
+.declined-status {
+  background-color: #e57373; /* Softer red */
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: inline-block;
+  text-align: center;
+}
 
-    &:before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      top: 2px;
-      left: 2px;
-      background-color: white;
-      transition: transform 0.3s ease;
-    }
+/* Modal styles */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  padding-top: 80px;
+  animation: fadeIn 0.4s;
+}
 
-    &:checked:before {
-      transform: translateX(20px);
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-
-  label {
-    margin-left: 8px;
+  to {
+    opacity: 1;
   }
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 25px;
+  border: none;
+  width: 50%;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+}
+
+@keyframes slideIn {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin: 10px 0;
 }

@@ -13,6 +13,6 @@ import { FooterModule } from '../footer/footer.module';
     FooterModule,
     RouterModule.forChild([{ path: '', component: ContactComponent }]),
   ],
-  exports: [],
+  exports: [HeaderModule, FooterModule],
 })
 export class ContactModule {}

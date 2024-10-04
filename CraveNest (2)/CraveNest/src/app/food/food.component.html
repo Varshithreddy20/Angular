@@ -1,0 +1,28 @@
+<app-header></app-header>
+<nav class="cuisine-nav">
+  <button
+    *ngFor="let cuisine of cuisines"
+    (click)="selectCuisine(cuisine)"
+    [class.active]="cuisine === selectedCuisine"
+  >
+    {{ cuisine }}
+  </button>
+</nav>
+
+<main class="food-content">
+  <h2>{{ selectedCuisine }}</h2>
+  <div class="food-items">
+    <div *ngFor="let item of filteredFoodItems" class="food-item">
+      <img [src]="item.image" [alt]="item.name" />
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <p class="price">{{ item.price | currency }}</p>
+      <button (click)="addToCart(item)" [disabled]="!item.available">
+        {{ item.available ? "Add to Cart" : "Not Available" }}
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- Footer Section -->
+<app-footer></app-footer>

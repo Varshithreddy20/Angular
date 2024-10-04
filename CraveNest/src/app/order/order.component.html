@@ -1,43 +1,74 @@
 <app-header></app-header>
 
+<!-- Curved Image Section -->
+<!-- <section class="order-hero">
+  <div class="wave-container">
+    <img
+      src="https://via.placeholder.com/1920x1080.png?text=Delicious+Food+Image"
+      alt="Order Your Favorite Dish"
+    />
+  </div>
+</section> -->
+
 <main class="order-content">
   <h2>Your Order</h2>
+
+  <!-- Cart Items -->
   <ul *ngIf="cartItems.length > 0; else emptyCart">
-    <li *ngFor="let item of cartItems">
+    <li *ngFor="let item of cartItems" class="order-item">
       <img [src]="item.image" [alt]="item.name" class="item-image" />
       <div class="item-details">
-        <span>{{ item.name }}</span>
-        <div class="quantity-controls">
-          <button (click)="decreaseQuantity(item)">-</button>
-          <span>{{ item.quantity }}</span>
-          <button (click)="increaseQuantity(item)">+</button>
+        <div class="item-info">
+          <span class="item-name">{{ item.name }}</span>
+          <div class="quantity-controls">
+            <button (click)="decreaseQuantity(item)">-</button>
+            <span>{{ item.quantity }}</span>
+            <button (click)="increaseQuantity(item)">+</button>
+          </div>
         </div>
-        <span>{{ item.price * item.quantity | currency }}</span>
+        <span class="item-price">{{
+          item.price * item.quantity | currency
+        }}</span>
       </div>
     </li>
   </ul>
 
+  <!-- Empty Cart Template -->
   <ng-template #emptyCart>
-    <p>Your cart is empty!</p>
+    <div class="empty-cart-container">
+      <p class="empty-cart-message">
+        Oops! Your cart is feeling a bit empty! 🛒
+      </p>
+      <p class="empty-cart-submessage">We know you're hungry! 🍔🍕</p>
+      <a routerLink="/menu" class="browse-menu-btn">Check out the menu</a>
+      <p class="footer-message">
+        Our chefs are waiting to whip up something delicious just for you! 👩‍🍳
+      </p>
+    </div>
   </ng-template>
 
-  <p *ngIf="cartItems.length > 0">Total: {{ totalPrice | currency }}</p>
+  <!-- Total and Buttons -->
+  <div class="order-summary" *ngIf="cartItems.length > 0">
+    <p>Total: {{ totalPrice | currency }}</p>
 
-  <button
-    class="clear-cart-btn"
-    (click)="clearCart()"
-    [disabled]="cartItems.length === 0"
-  >
-    Clear Cart
-  </button>
+    <button
+      class="clear-cart-btn"
+      (click)="clearCart()"
+      [disabled]="cartItems.length === 0"
+    >
+      Clear Cart
+    </button>
+    <button
+      class="checkout-btn"
+      [disabled]="cartItems.length === 0 || isLoading"
+      (click)="placeOrder()"
+    >
+      Place Order
+    </button>
 
-  <button
-    class="checkout-btn"
-    [disabled]="cartItems.length === 0"
-    (click)="checkout()"
-  >
-    Proceed to Checkout
-  </button>
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading" class="loading-spinner"></div>
+  </div>
 </main>
 
 <app-footer></app-footer>

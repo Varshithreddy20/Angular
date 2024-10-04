@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { BookingsService } from '../bookings.service';
-import { BookingsModule } from './bookings.module';
+import { DialogService } from '../dialog.service';
+import { AuthService } from '../auth.service'; // Import the AuthService to get SignUpId
 
 @Component({
   selector: 'app-bookings',
@@ -22,23 +20,20 @@ export class BookingsComponent {
     // time: ''
   };
 
-  constructor(private bookingsService: BookingsService) {}
+  constructor(
+    private bookingsService: BookingsService,
+    private dialogService: DialogService,
+    private authService: AuthService // Inject AuthService
+  ) {}
 
   onSubmit() {
-    // You can enable this section when date and time inputs are available
-    /*
-    const formattedDateTime = this.changeDateFormate(
-      this.booking.date,
-      this.booking.time
-    );
-    const [formattedDate, formattedTime] = formattedDateTime.split('T');
-    */
+    // Retrieve the SignUpId from the AuthService
+    const signUpId = this.authService.getSignUpID(); // Get SignUpId from auth
 
+    // Add the SignUpId to the booking payload
     const formattedBooking = {
       ...this.booking,
-      // Uncomment once you bring date and time inputs back
-      // date: formattedDate,
-      // time: formattedTime,
+      signUpId: signUpId, // Include SignUpId in the booking payload
     };
 
     this.bookingsService.createBooking(formattedBooking).subscribe(
@@ -49,40 +44,11 @@ export class BookingsComponent {
         console.error('Error submitting booking:', error);
       }
     );
-  }
 
-  // This method can be used when date and time are reintroduced
-  /*
-  private changeDateFormate = (
-    date: string,
-    time: string,
-    format: string = '-'
-  ): string => {
-    const dateobj = new Date(date);
-    const parts = time.match(/(\d+):(\d+)/);
-
-    if (!parts) throw new Error('Invalid time format');
-
-    const hours = parseInt(parts[1], 10) % 24;
-    const minutes = parseInt(parts[2], 10);
-
-    dateobj.setHours(hours, minutes, 0, 0);
-
-    const addZeroToValue = (value: string) => value.padStart(2, '0');
-
-    return (
-      [
-        dateobj.getFullYear(),
-        addZeroToValue((dateobj.getMonth() + 1).toString()),
-        addZeroToValue(dateobj.getDate().toString()),
-      ].join(format) +
-      'T' +
-      [
-        addZeroToValue(dateobj.getHours().toString()),
-        addZeroToValue(dateobj.getMinutes().toString()),
-        '00',
-      ].join(':')
+    this.dialogService.openTimedDialog(
+      'Booking Success',
+      'Your reservation has been placed successfully.',
+      1000
     );
-  };
-  */
+  }
 }

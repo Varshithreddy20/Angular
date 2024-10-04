@@ -1,0 +1,116 @@
+<app-header></app-header>
+
+<div class="requests-container">
+  <!-- Tab Navigation -->
+  <div class="tabs">
+    <button
+      class="tab-button"
+      [ngClass]="{ active: selectedTab === 'orders' }"
+      (click)="selectTab('orders')"
+    >
+      Orders
+    </button>
+    <button
+      class="tab-button"
+      [ngClass]="{ active: selectedTab === 'bookings' }"
+      (click)="selectTab('bookings')"
+    >
+      Bookings
+    </button>
+  </div>
+
+  <!-- Orders Section (Visible if 'orders' tab is selected) -->
+  <div *ngIf="selectedTab === 'orders'" class="orders-section">
+    <h2>Your Orders</h2>
+    <table *ngIf="orders.length > 0; else noOrders" class="orders-table">
+      <thead>
+        <tr>
+          <th>Order #</th>
+          <th>Order Date & Time</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Total Amount</th>
+          <th>Items Ordered</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" class="order-row">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.createdAt | date : "medium" }}</td>
+          <td>{{ order.customerName }}</td>
+          <td>{{ order.customerEmail }}</td>
+          <td>{{ order.totalAmount | currency }}</td>
+          <td>
+            <button
+              (click)="order.showItems = !order.showItems"
+              class="toggle-btn"
+            >
+              {{ order.showItems ? "Hide Items" : "View Items" }}
+            </button>
+            <ul *ngIf="order.showItems" class="items-list">
+              <li *ngFor="let item of order.items">
+                <strong>{{ item.foodItemName }}</strong> - {{ item.quantity }} x
+                {{ item.unitPrice | currency }}
+              </li>
+            </ul>
+          </td>
+          <td
+            [ngClass]="{
+              'status-accepted': order.status === 'Accepted',
+              'status-pending': order.status === 'Pending',
+              'status-declined': order.status === 'Declined'
+            }"
+          >
+            {{ order.status }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noOrders>
+      <p>No orders found for your account.</p>
+    </ng-template>
+  </div>
+
+  <!-- Bookings Section (Visible if 'bookings' tab is selected) -->
+  <div *ngIf="selectedTab === 'bookings'" class="bookings-section">
+    <h2>Your Bookings</h2>
+    <table *ngIf="bookings.length > 0; else noBookings" class="bookings-table">
+      <thead>
+        <tr>
+          <th>Booking #</th>
+          <th>Booking Date & Time</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Persons</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings" class="booking-row">
+          <td>{{ booking.bookingId }}</td>
+          <td>{{ booking.bookingDateAndTime | date : "medium" }}</td>
+          <td>{{ booking.name }}</td>
+          <td>{{ booking.email }}</td>
+          <td>{{ booking.phone }}</td>
+          <td>{{ booking.persons }}</td>
+          <td
+            [ngClass]="{
+              'status-confirmed': booking.status === 'accepted',
+              'status-pending': booking.status === 'pending',
+              'status-declined': booking.status === 'declined'
+            }"
+          >
+            {{ booking.status }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noBookings>
+      <p>No bookings found for your account.</p>
+    </ng-template>
+  </div>
+
+  <app-footer></app-footer>
+</div>

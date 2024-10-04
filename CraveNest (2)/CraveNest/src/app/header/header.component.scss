@@ -1,0 +1,41 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.profile,
+.login {
+  margin-left: auto;
+}
+.login,
+.logout {
+  margin-left: 20px;
+}
+.profile-menu {
+  display: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+header {
+  background-color: #fff;
+  padding: 5px 0;
+  border-bottom: 0px solid #eee;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.logo {
+  max-width: 60px;
+}

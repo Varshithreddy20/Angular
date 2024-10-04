@@ -1,1 +1,52 @@
-<p>profile works!</p>
+<app-header></app-header>
+
+<div class="profile-container" *ngIf="isLoggedIn">
+  <h2>User Profile</h2>
+  <p><strong>Name:</strong> {{ name }}</p>
+  <p><strong>Email:</strong> {{ emailId }}</p>
+
+  <!-- Edit button -->
+  <button *ngIf="!isEditing" (click)="enableEditing()">Edit</button>
+
+  <!-- Edit form, visible only when editing -->
+  <div *ngIf="isEditing">
+    <h3>Edit Profile</h3>
+
+    <!-- First step: Confirm old password -->
+    <div *ngIf="!isPasswordConfirmed">
+      <form (ngSubmit)="confirmOldPassword()">
+        <label>
+          Password (Confirm Old Password):
+          <input
+            type="password"
+            [(ngModel)]="oldPassword"
+            name="oldPassword"
+            required
+          />
+        </label>
+        <button type="submit">Verify Password</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </div>
+
+    <!-- Second step: Edit profile (visible only when password is confirmed) -->
+    <div *ngIf="isPasswordConfirmed">
+      <form (ngSubmit)="saveChanges()">
+        <label>
+          Name:
+          <input [(ngModel)]="editName" name="name" required />
+        </label>
+        <label>
+          Email:
+          <input [(ngModel)]="editEmail" name="emailId" required />
+        </label>
+        <label>
+          New Password (Optional):
+          <input type="password" [(ngModel)]="newPassword" name="newPassword" />
+        </label>
+        <button type="submit">Save</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>

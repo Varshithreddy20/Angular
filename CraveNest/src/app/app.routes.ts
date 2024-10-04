@@ -10,8 +10,17 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuComponent } from './menu/menu.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AdminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
+  {
+    path: 'Confirmdialog',
+    loadChildren: () =>
+      import('./confirmation-dialog/confirmation-dialog.module').then(
+        (m) => m.ConfirmationDialogModule
+      ),
+  },
   {
     path: 'login',
     loadChildren: () =>
@@ -44,6 +53,7 @@ export const routes: Routes = [
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AdminGuard],
   },
   {
     path: 'about',
@@ -55,10 +65,21 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./contact/contact.module').then((m) => m.ContactModule),
   },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfileModule),
+  },
   {
     path: 'menu',
     loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
+  },
+  {
+    path: 'request',
+    loadChildren: () =>
+      import('./your-requests/your-requests.module').then(
+        (m) => m.YourRequestsModule
+      ),
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

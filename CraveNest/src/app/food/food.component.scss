@@ -1,141 +1,167 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+$background-color: #f8f8f8;
+$card-background: #ffffff;
+$text-color: #333333;
+$muted-color: #666666;
+$accent-color: #8b4513; // A soft brown
+$button-color: #a0522d; // Slightly darker brown for buttons
+$selected-background: rgba(
+  8,
+  2,
+  2,
+  0.1
+); // Semi-transparent black for darkening
 
-.profile,
-.login {
-  margin-left: auto;
-}
-
-.login,
-.logout {
-  margin-left: 20px;
-}
-
-.profile-menu {
-  display: none;
-}
-
-.container {
+.food-ordering {
+  font-family: "Arial", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-}
-
-main {
-  flex: 1;
   padding: 20px;
-}
-
-.food-container {
-  margin-top: 50px;
+  background-color: $background-color;
 }
 
 .cuisine-nav {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
-  border-bottom: 2px solid #4a0e0e;
-}
 
-.cuisine-nav button {
-  background-color: transparent;
-  color: #333;
-  padding: 10px 20px;
-  margin: 0;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
+  button {
+    background-color: transparent;
+    color: $text-color;
+    border: 1px solid $muted-color;
+    padding: 8px 16px;
+    margin: 0 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-  &:hover,
-  &:focus {
-    background-color: #f0f0f0;
-    outline: none;
-  }
-
-  &.active {
-    color: #4a0e0e;
-    border-bottom: 3px solid #4a0e0e;
-    font-weight: bold;
-  }
-}
-
-.food-content {
-  text-align: center;
-}
-.food-content button {
-  display: inline-block;
-  background-color: #6b6462; /* Consistent with the palette */
-  color: #fff; /* Soft, lighter text color */
-  padding: 7px 12px; /* Reduced padding for a sleeker button */
-  border: none; /* Remove border */
-  border-radius: 6px; /* Softer rounding */
-  font-size: 10px; /* Slightly smaller for a compact look */
-  font-weight: bold; /* Emphasize text */
-  text-transform: uppercase; /* Consistent text style */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-
-  &:hover {
-    background-color: #3c3434; /* Lighter on hover for contrast */
-    color: #f3cbb2; /* Clearer hover text */
-  }
-
-  &:active {
-    background-color: #866a5e; /* Darker on active for feedback */
+    &:hover,
+    &.active {
+      background-color: $accent-color;
+      color: $card-background;
+      border-color: $accent-color;
+    }
   }
 }
 
 .food-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  justify-items: center;
-  margin-bottom: 50px;
 }
 
 .food-item {
-  width: 100%;
-  max-width: 250px;
-  height: auto;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background-color: $card-background;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative; // For positioning the overlay
 
   &:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &.in-cart::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $selected-background;
+    pointer-events: none; // Allows clicking through the overlay
+  }
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .food-info {
+    padding: 15px;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    color: $text-color;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0 0 8px;
+    color: $muted-color;
+    font-size: 14px;
+  }
+
+  .price {
+    font-weight: bold;
+    color: $accent-color;
+    font-size: 16px;
   }
 }
 
-.food-item img {
+.cart-controls {
+  margin-top: 12px;
+}
+
+.add-to-cart,
+.quantity-controls {
   width: 100%;
-  height: 200px; /* Uniform image height */
-  object-fit: cover; /* Ensure images cover the space evenly */
-  border-radius: 10px; /* Smooth rounding */
-  margin-bottom: 15px;
+  padding: 8px;
+  background-color: $button-color;
+  color: $card-background;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+
+  &:hover {
+    background-color: darken($button-color, 10%);
+  }
+
+  &:disabled {
+    background-color: $muted-color;
+    cursor: not-allowed;
+  }
 }
 
-.food-item h3 {
-  margin: 15px 0;
-  font-size: 20px;
-  color: #3a2121;
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    background-color: transparent;
+    color: $card-background;
+    border: none;
+    padding: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($card-background, 40%);
+    }
+  }
+
+  span {
+    color: $card-background;
+    font-weight: bold;
+  }
 }
 
-.food-item p {
-  margin-bottom: 10px;
-  color: #666;
-}
+@media (max-width: 768px) {
+  .cuisine-nav {
+    flex-wrap: wrap;
 
-.price {
-  font-size: 18px;
-  color: #550b03;
+    button {
+      margin: 4px;
+    }
+  }
+
+  .food-items {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }

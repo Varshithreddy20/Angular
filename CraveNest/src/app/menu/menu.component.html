@@ -15,6 +15,25 @@
           <h3>{{ item.name }}</h3>
           <p>{{ item.description }}</p>
           <span class="price">${{ item.price.toFixed(2) }}</span>
+
+          <!-- Add to Cart Section -->
+          <div class="cart-actions">
+            <!-- Show Add to Cart button if item is not in cart -->
+            <button
+              *ngIf="!isInCart(item)"
+              (click)="addToCart(item)"
+              class="add-to-cart"
+            >
+              Add to Cart
+            </button>
+
+            <!-- Show quantity control if item is in cart -->
+            <div *ngIf="isInCart(item)" class="quantity-control">
+              <button (click)="decreaseQuantity(item)">-</button>
+              <span>{{ getQuantity(item) }}</span>
+              <button (click)="increaseQuantity(item)">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

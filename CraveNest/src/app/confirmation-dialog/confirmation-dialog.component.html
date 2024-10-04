@@ -1,0 +1,9 @@
+<h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2>
+
+<mat-dialog-content class="dialog-content">
+  {{ data.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="!data.hideCloseButton">
+  <button mat-button class="dialog-button" (click)="onClose()">OK</button>
+</mat-dialog-actions>

@@ -1,58 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crave-Nest</title>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <nav>
-          <img src="/cravenestlogo.jpg" alt="Crave Nest Logo" class="logo" />
-          <div>
-            <a [routerLink]="['/home']" routerLinkActive="router-link-active"
-              >HOME</a
-            >
-            <a [routerLink]="['/food']" routerLinkActive="router-link-active"
-              >FOOD</a
-            >
-            <a [routerLink]="['/order']" routerLinkActive="router-link-active"
-              >ORDER</a
-            >
-            <a [routerLink]="['/menu']" routerLinkActive="router-link-active"
-              >MENUS</a
-            >
-            <a href="#gift-cards">GIFT CARDS</a>
-            <a
-              [routerLink]="['/bookings']"
-              routerLinkActive="router-link-active"
-              >BOOKINGS</a
-            >
-            <a [routerLink]="['/about']" routerLinkActive="router-link-active"
-              >ABOUT</a
-            >
-            <a [routerLink]="['/contact']" routerLinkActive="router-link-active"
-              >CONTACT</a
-            >
-          </div>
+<header>
+  <div class="container">
+    <nav>
+      <img src="/cravenestlogo.jpg" alt="Crave Nest Logo" class="logo" />
+      <div>
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+          >HOME</a
+        >
+        <a [routerLink]="['/food']" routerLinkActive="router-link-active"
+          >FOOD</a
+        >
 
-          <div class="profile">
-            <!-- Profile menu shown only if the user is logged in -->
-            <div *ngIf="isLoggedIn" id="profile-menu" class="profile-menu">
-              <span id="username">{{ username }}</span>
-              <button (click)="logout()" class="btn">Logout</button>
-            </div>
-            <!-- Login button shown only if the user is not logged in -->
-            <a
-              *ngIf="!isLoggedIn"
-              [routerLink]="['/login']"
-              routerLinkActive="router-link-active"
-              >LOGIN</a
-            >
-          </div>
-        </nav>
+        <a [routerLink]="['/menu']" routerLinkActive="router-link-active"
+          >MENU</a
+        >
+        <a href="#gift-cards">GIFT CARDS</a>
+        <a [routerLink]="['/bookings']" routerLinkActive="router-link-active"
+          >BOOKINGS</a
+        >
+        <a [routerLink]="['/about']" routerLinkActive="router-link-active"
+          >ABOUT</a
+        >
+        <a [routerLink]="['/contact']" routerLinkActive="router-link-active"
+          >CONTACT</a
+        >
+        <a [routerLink]="['/request']" routerLinkActive="router-link-active"
+          >YOUR-REQUESTS</a
+        >
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active">
+          <i class="fas fa-user"></i>
+          <!-- User Icon -->
+        </a>
       </div>
-    </header>
-  </body>
-</html>
+      <a [routerLink]="['/order']" routerLinkActive="router-link-active">
+        <i class="fas fa-shopping-cart"></i>
+        <!-- Shopping Cart Icon -->
+      </a>
+      <div class="profile">
+        <!-- Profile menu shown only if the user is logged in -->
+        <div *ngIf="isLoggedIn" id="profile-menu" class="profile-menu">
+          <span id="username">{{ username }}</span>
+          <i class="fas fa-sign-out-alt logout-icon" (click)="logout()"></i>
+          <!-- Sign-Out Icon -->
+        </div>
+        <!-- Login button shown only if the user is not logged in -->
+        <a
+          *ngIf="!isLoggedIn"
+          [routerLink]="['/login']"
+          routerLinkActive="router-link-active"
+          >LOGIN</a
+        >
+      </div>
+    </nav>
+  </div>
+</header>

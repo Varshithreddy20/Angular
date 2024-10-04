@@ -1,11 +1,17 @@
 footer {
   background-color: #3d3737;
   color: #fff;
-  padding: 2px;
+  padding: 5px 0; /* Reduced padding to make the footer smaller */
   text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 0.75rem; /* Reduced font size for a smaller appearance */
+  }
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0px 10px; /* Reduced padding for a tighter layout */
 }

@@ -1,0 +1,141 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile,
+.login {
+  margin-left: auto;
+}
+
+.login,
+.logout {
+  margin-left: 20px;
+}
+
+.profile-menu {
+  display: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.food-container {
+  margin-top: 50px;
+}
+
+.cuisine-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #4a0e0e;
+}
+
+.cuisine-nav button {
+  background-color: transparent;
+  color: #333;
+  padding: 10px 20px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #f0f0f0;
+    outline: none;
+  }
+
+  &.active {
+    color: #4a0e0e;
+    border-bottom: 3px solid #4a0e0e;
+    font-weight: bold;
+  }
+}
+
+.food-content {
+  text-align: center;
+}
+.food-content button {
+  display: inline-block;
+  background-color: #6b6462; /* Consistent with the palette */
+  color: #fff; /* Soft, lighter text color */
+  padding: 7px 12px; /* Reduced padding for a sleeker button */
+  border: none; /* Remove border */
+  border-radius: 6px; /* Softer rounding */
+  font-size: 10px; /* Slightly smaller for a compact look */
+  font-weight: bold; /* Emphasize text */
+  text-transform: uppercase; /* Consistent text style */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+
+  &:hover {
+    background-color: #3c3434; /* Lighter on hover for contrast */
+    color: #f3cbb2; /* Clearer hover text */
+  }
+
+  &:active {
+    background-color: #866a5e; /* Darker on active for feedback */
+  }
+}
+
+.food-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-bottom: 50px;
+}
+
+.food-item {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.food-item img {
+  width: 100%;
+  height: 200px; /* Uniform image height */
+  object-fit: cover; /* Ensure images cover the space evenly */
+  border-radius: 10px; /* Smooth rounding */
+  margin-bottom: 15px;
+}
+
+.food-item h3 {
+  margin: 15px 0;
+  font-size: 20px;
+  color: #3a2121;
+}
+
+.food-item p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.price {
+  font-size: 18px;
+  color: #550b03;
+}

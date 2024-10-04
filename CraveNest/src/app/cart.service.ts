@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
 export interface CartItem {
+  foodItemId: number;
   name: string;
   price: number;
   quantity: number;
@@ -14,34 +14,31 @@ export interface CartItem {
 })
 export class CartService {
   private cartSubject = new BehaviorSubject<CartItem[]>([]);
-  private newOrdersSubject = new BehaviorSubject<any>(null);
-
   cart$ = this.cartSubject.asObservable();
-  newOrders$ = this.newOrdersSubject.asObservable();
-
-  private apiUrl = 'http://localhost:60176/api/orders';
-
-  constructor(private http: HttpClient) {}
 
   addToCart(item: CartItem) {
     const currentCart = this.cartSubject.getValue();
     const existingItemIndex = currentCart.findIndex(
-      (i) => i.name === item.name
+      (i) => i.foodItemId === item.foodItemId
     );
 
     if (existingItemIndex !== -1) {
-      currentCart[existingItemIndex].quantity += 1;
+      // Update the existing item's quantity correctly
+      currentCart[existingItemIndex].quantity = item.quantity;
     } else {
-      currentCart.push({ ...item, quantity: 1 });
+      // Add a new item with quantity 1
+      currentCart.push(item);
     }
 
-    this.cartSubject.next([...currentCart]);
+    this.cartSubject.next([...currentCart]); // Notify subscribers with updated cart
   }
 
   removeFromCart(item: CartItem) {
     const currentCart = this.cartSubject.getValue();
-    const updatedCart = currentCart.filter((i) => i.name !== item.name);
-    this.cartSubject.next(updatedCart);
+    const updatedCart = currentCart.filter(
+      (i) => i.foodItemId !== item.foodItemId
+    );
+    this.cartSubject.next(updatedCart); // Notify subscribers with updated cart
   }
 
   updateCart(items: CartItem[]) {
@@ -50,30 +47,5 @@ export class CartService {
 
   clearCart() {
     this.cartSubject.next([]);
-  }
-
-  getOrders(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }
-
-  updateOrderStatus(
-    id: string,
-    status: 'accepted' | 'declined'
-  ): Observable<any> {
-    return this.http.patch(`${this.apiUrl}/${id}`, { status });
-  }
-  placeOrder(order: any): Observable<any> {
-    return new Observable((observer) => {
-      this.http.post(this.apiUrl, order).subscribe(
-        (response: any) => {
-          this.newOrdersSubject.next(response);
-          observer.next(response);
-          observer.complete();
-        },
-        (error) => {
-          observer.error(error);
-        }
-      );
-    });
   }
 }
